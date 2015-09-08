@@ -1,0 +1,586 @@
+// =======================================
+// Common Style
+// =======================================
+#header, #footer, #container {
+	position: relative;
+	width: 100%;
+}
+#container {
+	min-height: 720px;
+}
+#header {
+	position: fixed;
+	height: 40px;
+	background: $bg-nav-depth;
+	z-index: 10000;
+	.wrap {
+		h1 {
+			font-family: "Myriad Pro";
+			font-size: 16px;
+			font-weight: normal;
+			color: #fff;
+			line-height: 40px;
+			margin: 0;
+		}
+	}
+}
+#header {
+	.wrap {
+		> h1 {
+			@include span(2);
+			@include susy-breakpoint($tablet, 8) {
+				@include span(2);
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(2);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			height: 100%;
+			margin-top: 5px;
+			text-align: center;
+			[class^="tab-"] {
+				position: relative;
+				display: inline-block;
+				color: #ccc;
+				min-width: 110px;
+				text-align: left;
+				padding: 5px 10px;
+				border: 1px solid #999;
+				&:before {
+					position: absolute;
+					font-family: 'FontAwesome';
+					content: "\f002";
+					font-size: 16px;
+					top: 1px;
+					right: 6px;
+				}
+				&:hover, &:focus, &.active {
+					color: inherit;
+					background: $bg-default;
+					border: 1px solid $bg-default;
+					padding-bottom: 10px;
+					&:before {
+						color: #b3b3b3;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				@include span(4);
+				display: inline-block;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(4);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			height: 100%;
+			text-align: center;
+			> a {
+				float: left;
+				display: block;
+				color: #ccc;
+				min-width: 80px;
+				height: 100%;
+				line-height: 40px;
+				padding-left: 36px;
+				padding-right: 14px;
+				i {
+					font-size: 18px;
+					margin-right: 6px;
+					vertical-align: middle;
+				}
+				&:hover, &:focus, &.active {
+					color: #fff;
+					background: rgba(255, 255, 255, 0.2);
+					&:before {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			> a {
+				position: relative;
+				&:before {
+					font-size: 14px;
+					color: #ccc;
+					position: absolute;
+					left: 14px;
+				}
+				&:nth-of-type(1):before {
+					font-family: 'FontAwesome';
+					content: "\f274";
+				}
+				&:nth-of-type(2):before {
+					font-family: 'FontAwesome';
+					content: "\f007";
+				}
+				&:nth-of-type(3):before {
+					font-family: 'FontAwesome';
+					content: "\f013";
+				}
+				&:nth-of-type(4):before {
+					font-family: 'FontAwesome';
+					content: "\f023";
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				display: none;
+				float: right;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: inline-block;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			text-align: right;
+			margin-top: 5px;
+			.menu-button {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				color: #ccc;
+				text-align: center;
+				border: 1px solid #999;
+				span {
+					display: none;
+				}
+				&:before {
+					font-family: 'FontAwesome';
+					content: "\f0c9";
+					font-size: 18px;
+					line-height: 29px;
+				}
+			}
+		}
+		.search-button {
+			@extend .menu-button;
+			&:before {
+				content: "\f002" !important;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			@include span(2 last);
+			display: inline-block;
+			.search-button {
+				display: inline-block;
+			}
+			@include susy-breakpoint($tablet, 8) {
+				display: inline-block;
+				@include span(2 last);
+				.search-button {
+					display: none;
+				}
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: none;
+				@include span(6 last);
+			}
+		}
+	}
+}
+#footer {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 40px;
+	padding-top: 10px;
+	border-top: 1px solid #fff;
+	.copyright {
+		font-family: Verdana;
+		font-style: normal;
+		text-align: center;
+	}
+}
+
+// =======================================
+// index.html (Store 검색)
+// =======================================
+.store-bg {
+	background: $bg-default;
+	height: 100vh;
+	.wrap {
+		position: relative;
+		height: 100%;
+		.store-box {
+			position: absolute;
+			top: 70px;
+			left: 50%;
+			text-align: center;
+			padding-left: 20px;
+			padding-right: 20px;
+			transform: translateX(-50%);
+			.search-set {
+				display: inline-block;
+				width: 100%;
+				overflow: hidden;
+				margin-bottom: 40px;
+				[class^="tab-"] {
+					display: inline-block;
+					float: left;
+					width: 50%;
+					height: 30px;
+					line-height: 30px;
+					color: #999;
+					background: #fff;
+					&:hover, &:focus, &.active {
+						color: #fff;
+						background: $font-color-active;
+					}
+				}
+			}
+			h1 {
+				font-size: 30px;
+				font-weight: normal;
+				margin-top: 17px;
+				margin-bottom: 40px;
+			}
+			li {
+				position: relative;
+				margin-bottom: 10px;
+				input {
+					font-size: 13px;
+					width: 100%;
+					height: 50px;
+					padding-left: 15px;
+					padding-right: 70px;
+					border: 0px;
+					@include susy-breakpoint($tablet, 8) {
+						font-size: 14px;
+						padding-left: 20px;
+					}
+				}
+				.checkbox {
+					text-align: left;
+					margin-bottom: 14px;
+					.store-label {
+						color: #fff;
+					}
+				}
+				.btn-default {
+					font-size: 24px;
+					width: 100%;
+					height: 50px;
+					line-height: 50px;
+				}
+				button {
+					position: absolute;
+					top: 0;
+					right: 0;
+					width: 50px;
+					height: 50px;
+					border-left: 1px solid $bg-default;
+					&:before {
+						font-size: 20px;
+						color: $font-default;
+					}
+					&:hover, &:focus, &.active {
+						&:before {
+							color: $font-color-active;
+						}
+					}
+					&.store-zipcode:before {
+						font-family: 'FontAwesome';
+						content: "\f041";
+						font-size: 24px;
+					}
+					&.store-select:before {
+						font-family: 'FontAwesome';
+						content: "\f0c4";
+					}
+					&.store-detail:before {
+						font-family: 'FontAwesome';
+						content: "\f0fe";
+					}
+					&.store-date:before {
+						font-family: 'FontAwesome';
+						content: "\f073";
+					}
+					&.store-time:before {
+						font-family: 'FontAwesome';
+						content: "\f017";
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+.store-bg {
+	.wrap {
+		.store-box {
+			@include span(4);
+			@include susy-breakpoint($tablet, 8) {
+				@include span(4);
+				top: 50%;
+				transform: translate(-50%, -50%);
+				padding: 0;
+				.search-set {
+					display: none;
+				}
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(4);
+			}
+		}
+	}
+}
+
+// =======================================
+// employee-list.html (사원 - 사원리스트)
+// =======================================
+.employee-list {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1) {
+				width: 60px;
+			}
+			col:nth-of-type(2),
+			col:nth-of-type(3) {
+				width: 250px;
+			}
+			col:nth-of-type(4),
+			col:nth-of-type(6) {
+				width: 120px;
+			}
+		}
+	}
+}
+
+// =======================================
+// item-item-list.html (아이템 - 아이템리스트)
+// =======================================
+.item-item-list {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1) {
+				width: 60px;
+			}
+		}
+	}
+}
+
+// =======================================
+// item-firm-support.html (아이템 - 회사지원금)
+// =======================================
+.item-firm-support {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1) {
+				width: 60px;
+			}
+			col:nth-of-type(4),
+			col:nth-of-type(5),
+			col:nth-of-type(6) {
+				width: 150px;
+			}
+		}
+	}
+}
+
+// =======================================
+// automat-location.html (자판기 - 로케이션)
+// =======================================
+.automat-location {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1) {
+				width: 60px;
+			}
+			col:nth-of-type(4),
+			col:nth-of-type(5),
+			col:nth-of-type(6) {
+				width: 150px;
+			}
+		}
+	}
+}
+
+// =======================================
+// automat-column.html (자판기 - 컬럼)
+// =======================================
+.automat-column {
+	[class^="table-group-"] {
+		position: relative;
+		.table-title {
+			font-size: 16px;
+			padding-bottom: 6px;
+			&:before {
+				@extend .sub-top-title;
+				font-size: 14px;
+			}
+		}
+		.table-set {
+			colgroup {
+				col:nth-of-type(1) {
+				width: 60px;
+				}
+			}
+			tbody {
+				tr.line-move-active {
+					outline:2px solid $font-color-active;
+					outline-offset: -1px;
+				}
+				td:nth-of-type(2) {
+					text-align: left;
+				}
+				td:nth-of-type(3) {
+					text-align: right;
+				}
+			}
+		}
+	}
+	.table-group-left {
+		@include span(6);
+		padding-right: 10px;
+	}
+	.table-group-right {
+		@include span(6 last);
+		padding-left: 10px;
+	}
+	.column-move {
+		position: absolute;
+		top: 191px;
+		left: 49.35%;
+		button.fa {
+			display: block;
+			font-size: 20px;
+			color: $font-color-nav;
+			&:hover, &:focus, &.active {
+				color: $font-color-active;
+			}
+		}
+	}
+	.table-box {
+		background: #363636;
+		height: 40px;
+		padding: 0 10px;
+		overflow: hidden;
+		[class^="table-box-"] {
+			color: $font-color-nav;
+			line-height: 40px;
+			span {
+				font-size: 14px;
+				color: $font-color-active;
+			}
+		}
+		.table-box-left {
+			float: left;
+		}
+		.table-box-right {
+			float: right;
+		}
+		.input-area {
+			float: right;
+			margin-top: 5px;
+			margin-right: -5px;
+		}
+	}
+}
+
+// =======================================
+// report-sale-list.html (리포트 - 판매현황)
+// =======================================
+.report-sale-list {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1),
+			col:nth-of-type(2),
+			col:nth-of-type(4),
+			col:nth-of-type(12),
+			col:nth-of-type(13) {
+				min-width: 80px;
+			}
+			col:nth-of-type(3),
+			col:nth-of-type(5),
+			col:nth-of-type(6) {
+				min-width: 100px;
+			}
+		}
+	}
+}
+
+// =======================================
+// report-time-list.html (리포트 - 시간별)
+// =======================================
+.report-time-list {
+	.table-set {
+		colgroup {
+			col:nth-of-type(1) {
+				width: 60px;
+			}
+		}
+	}
+}
+
+// =======================================
+// report-date-list.html (리포트 - 일자별)
+// =======================================
+.report-date-list {
+	.table-set {
+		@extend .item-item-list;
+	}
+}
+
+// =======================================
+// report-item-list.html (리포트 - 아이템별)
+// =======================================
+.report-item-list {
+	.table-set {
+		@extend .item-item-list;
+	}
+}
+
+// =======================================
+// report-employee-list.html (리포트 - 사원별)
+// =======================================
+.report-employee-list {
+	.table-set {
+		@extend .item-item-list;
+	}
+}
+
+// =======================================
+// report-automat-list.html (리포트 - 자판기별)
+// =======================================
+.report-automat-list {
+	.table-set {
+		@extend .item-item-list;
+	}
+}

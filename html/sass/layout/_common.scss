@@ -1,0 +1,501 @@
+// =======================================
+// Media Queries Variables (Device)
+// =======================================
+$mobile: 480px;
+$tablet: 760px;
+$desktop: 1044px;
+
+// =======================================
+// Grid System Style
+// =======================================
+// Layout wrap
+.wrap {
+	width: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	// @include container($mobile);
+	@include susy-breakpoint($tablet, 8) {
+		min-width: $tablet;
+		// @include container($tablet);
+	}
+	@include susy-breakpoint($desktop, 12) {
+		max-width: $desktop;
+		// @include container($desktop);
+	}
+}
+
+// =======================================
+// Base Style
+// =======================================
+html[class^='lt-ie'], [class^='lt-ie'] body {
+	height: 100%;
+}
+body {
+	min-height: 100vh;
+	margin: 0;
+	* {
+		padding: 0;
+		margin: 0;
+	}
+}
+// border-box 설정
+@include border-box-sizing;
+ul, li {
+	list-style: none;
+	outline: none;
+}
+input, button, select, textarea {
+	padding: 0;
+	border: 0;
+	cursor: pointer;
+	outline: none;
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	textarea {
+		margin-bottom: -5px;
+	}
+}
+a {
+	color: inherit;
+	text-decoration: inherit;
+	cursor: pointer;
+	outline: none;
+}
+button {
+	background-color: transparent;
+	outline: none;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+	-webkit-text-fill-color: #999 !important;
+	-webkit-box-shadow: 0 0 0px 1000px #e0e0e0 inset;
+}
+
+// =======================================
+// Skip Navigation
+// =======================================
+.blind {
+	position: relative;
+	z-index: 100;
+	display: block;
+	overflow: hidden;
+	font-size: 0;
+	text-align: center;
+	width: 1px;
+	height: 1px;
+	line-height: 0;
+	margin: 0 -1px -1px 0;
+	&:focus, &:active, &:hover {
+		font-size: 12px;
+		font-weight: bold;
+		color: #fff;
+		text-decoration: inherit;
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		margin: 0;
+		background: $font-color-active;
+	}
+}
+
+// =======================================
+// Checkbox Style
+// =======================================
+.checkbox {
+	position: relative;
+	line-height: 1.2;
+	label {
+		display: inline-block;
+		font-size: 12px;
+		vertical-align: super;
+		cursor: pointer;
+		.checkbox-label {
+			font-size: 12px;
+			padding-top: 2px;
+		}
+	}
+	input {
+		display: none;
+	}
+}
+//  Kalypto.checked.js 자동 생성 태그 Style 적용
+.k_toggle {
+	display: inline-block;
+	font-family: FontAwesome;
+	width: 18px;
+	height: 18px;
+	border: 1px solid #269700;
+	border-radius: 3px;
+	margin-right: 4px;
+	background: #fff;
+}
+.k_toggle.checked:before {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding-top: 1px;
+	font-family: FontAwesome;
+	font-size: 13px;
+	text-align: center;
+	color: $font-color-active;
+	content: '\f00c';
+}
+
+// =======================================
+// Radiobox Style
+// =======================================
+.radiobox {
+	@extend .checkbox;
+}
+//  Kalypto.checked.js 자동 생성 태그 Style 적용
+.k_toggleR {
+	border-radius: 10px;
+	@extend .k_toggle;
+}
+.k_toggleR.checked:before {
+	@extend .k_toggle.checked:before;
+	font-size: 12px;
+	content: '\f111';
+}
+
+// =======================================
+// Input Group Style
+// =======================================
+input, select, textarea {
+	height: 30px;
+	padding: 0 6px;
+	border: 1px solid #d2d2d2;
+	box-sizing: border-box;
+}
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	cursor: pointer;
+	display: block;
+	width: 12px;
+	color: $border-gray;
+	position: relative;
+	top: 2px;
+	&:before, &:after {
+		font-family: 'FontAwesome';
+		content: "\f0d8";
+		position: absolute;
+		right: -2px;
+	}
+	&:before {
+		top: -4px;
+		right: -2.5px;
+	}
+	&:after {
+		bottom: 0px;
+		-webkit-transform: rotate(180deg);
+	}
+}
+.input-area {
+	position: relative;
+	float: left;
+	margin-right: 5px;
+	input {
+		max-width: 100%;
+		padding-right: 30px;
+		padding-left: 6px;
+	}
+	button {
+		position: absolute;
+		top: 20%;
+		right: 8px;
+		font-size: 18px;
+		color: #989898;
+		outline: none;
+		&:focus, &:active, &:hover {
+			color: $font-color-active;
+		}
+	}
+	&:last-child {
+		margin-right: 0;
+	}
+}
+
+// =======================================
+// Select Group Style
+// =======================================
+.select_option {
+	position: relative;
+	padding-right: 20px;
+	padding-left: 6px;
+	background-color: transparent;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.lt-ie11 {
+	.select_option {
+		min-width: 100px;
+		padding-right: 0;
+	}
+}
+.select-area {
+	position: relative;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid #D2D2D2;
+	zoom: 1;
+	label {
+		display: none;
+	}
+	select {
+		height: 28px;
+		border: none;
+	}
+	&:after {
+		position: absolute;
+		z-index: -1;
+		top: 3px;
+		right: 8px;
+		font-family: FontAwesome;
+		font-size: 16px;
+		color: #989898;
+		content: '\f107';
+	}
+}
+// IE 10, 11의 네이티브 화살표 숨기기
+select::-ms-expand {
+	display: none;
+}
+
+// =======================================
+// Table Style
+// =======================================
+.table-set {
+	width: 100%;
+	th, td {
+		text-align: center;
+		height: 30px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	caption {
+		display: none;
+	}
+	colgroup {
+		col {
+			width: auto;
+		}
+	}
+	thead {
+		th {
+			border-bottom: 2px solid #777;
+			button.fa {
+				font-size: 13px;
+				vertical-align: top;
+				padding: 0 4px;
+			}
+		}
+	}
+	tbody {
+		th {
+			font-weight: bold;
+			color: #333;
+			background: #e1e1e1;
+		}
+		td {
+			a.id-link {
+				color: $font-color-active;
+				&:focus, &:active, &:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+	tr:nth-child(2n) {
+		td {
+
+			background: #fbfaf5;
+		}
+	}
+	th {
+		overflow: hidden;
+		color: $font-color-table-th;
+		word-break: normal;
+		padding-right: 6px;
+		padding-left: 6px;
+		border: 1px solid #c5c5c5;
+		background: #f7f9fa;
+	}
+	td {
+		overflow: hidden;
+		word-break: normal;
+		padding-right: 5px;
+		padding-left: 5px;
+		border: 1px solid #c5c5c5;
+		background: #fff;
+		button {
+			&.fa-plus {
+				@extend .fa-close;
+				margin-left: 2px;
+				margin-right: 6px;
+			}
+			&.fa-close {
+				margin-left: 10px;
+				color: $font-color-nav;
+				&:focus, &:active, &:hover {
+					color: $font-color-active;
+				}
+			}
+		}
+		[class^="btn-"].fa-plus {
+			font-size: 12px;
+			min-width: 24px;
+			height: 19px;
+			line-height: 1.5;
+			border-radius: 4px;
+		}
+		.number {
+			width: 100%;
+			height: 18px;
+			text-align: right;
+		}
+		.column {
+			@extend .number;
+			text-align: center;
+		}
+	}
+}
+
+// =======================================
+// Paging Style
+// =======================================
+.paging {
+	text-align: center;
+	color: #989898;
+	padding-top: 14px;
+	button {
+		height: 18px;
+		padding: 0 4px;
+		&:hover, &:active, .active {
+			color: $font-color-active;
+		}
+		[class*='fa-caret'] {
+			font-size: 17px;
+			vertical-align: top;
+		}
+		.fa-caret-left {
+			margin-right: 10px;
+		}
+		.fa-caret-right {
+			margin-left: 10px;
+		}
+	}
+	span {
+		a {
+			display: inline-block;
+			min-width: 26px;
+			padding: 2px 4px;
+			box-sizing: border-box;
+		}
+		&:hover, &:active, &.active {
+			a {
+				font-weight: bold;
+				color: #fff;
+				background: $font-color-active;
+				border-radius: 10px;
+			}
+		}
+	}
+}
+
+// =======================================
+// Content Layout Style
+// =======================================
+// Sub Title
+.sub-top-title {
+	font-size: 24px;
+	color: $font-color-title;
+	padding-top: 36px;
+	padding-bottom: 36px;
+	&:before {
+		font-size: 22px;
+		font-weight: bold;
+		color: $font-color-active;
+		margin-top: -2px;
+		margin-right: 6px;
+		content: '|';
+	}
+}
+// Form Group - Layout
+.form-group {
+	overflow: hidden;
+	padding-bottom: 10px;
+	.form-area-left {
+		float: left;
+		.input-area {
+			input {
+				min-width: 140px;
+			}
+		}
+	}
+	.form-area-right {
+		float: right;
+		text-align: right;
+	}
+	ul {
+		li {
+			display: inline-block;
+			font-size: 14px;
+			vertical-align: top;
+			&.checkbox {
+				padding-right: 10px;
+			}
+			select {
+				font-size: 12px;
+			}
+		}
+	}
+}
+// Form Group - Contents
+[class^='form-area-'] {
+	label {
+		padding-right: 8px;
+		height: 30px;
+		line-height: 30px;
+	}
+	.label-gutter {
+		padding-left: 30px;
+	}
+	.result-area {
+		display: inline-block;
+		padding-top: 8px;
+	}
+}
+// Search Group
+.search-area {
+	text-align: right;
+	input {
+		min-width: 200px;
+	}
+	.btn-default {
+		float: right;
+		margin-left: 4px;
+		// @include btn-default($minWidth: 80px);
+	}
+}
+// 도움말 스타일
+.notification {
+	padding-top: 7px;
+	clear: both;
+	i.fa {
+		color: $font-color-active;
+		font-size: 14px;
+		vertical-align: middle;
+	}
+	p {
+		line-height: 19px;
+	}
+	p:before {
+		padding-right: 6px;
+		font-family: FontAwesome;
+		font-size: 13px;
+		color: $font-color-nav;
+		content: '\f06a';
+	}
+}

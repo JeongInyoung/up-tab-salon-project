@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--#include file="_inc/_top-settings.html"-->
+<body>
+<!--#include file="_inc/_skip-navigation.html"-->
+
+<!-- Header Area -->
+<header id="header">
+<!--#include file="_inc/_header.html"-->
+</header>
+<!-- / Header Area End -->
+
+<!-- Contents Area-->
+<main id="container">
+	<article class="wrap automat-column">
+		<h2 class="sub-top-title">네이버 건물내 1층 로비</h2>
+		<!-- 아이템 추가, 제거 버튼 -->
+		<div class="column-move">
+			<button class="fa fa-chevron-left" aria-label="추가"></button>
+		</div>
+		<!-- 아이템 추가, 제거 버튼 끝 -->
+		<div class="table-group-left">
+			<h3 class="table-title">컬럼 리스트</h3>
+			<div class="table-box">
+				<div class="table-box-left">자판기 ID : <span>XXXXXXXXXXXXXX</span></div>
+				<div class="table-box-right">총 컬럼수 : <span>30</span></div>
+			</div>
+			<table class="table-set">
+				<caption>컬럼 리스트</caption>
+				<colgroup>
+					<col>
+					<col>
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>아이템명</th>
+						<th>판매단가</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>10</td>
+						<td>아이템 1<button class="fa fa-close" aria-label="아이템삭제"></button></td>
+						<td>1,800</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>아이템 2<button class="fa fa-close" aria-label="아이템삭제"></button></td>
+						<td>1,800</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="table-group-right">
+			<h3 class="table-title">아이템 리스트</h3>
+			<div class="table-box">
+				<div class="input-area">
+					<input id="employee" type="text">
+					<button class="fa fa-search" aria-label="검색하기"></button>
+				</div>
+			</div>
+			<table class="table-set">
+				<caption>아이템 리스트</caption>
+				<colgroup>
+					<col>
+					<col>
+					<col>
+				</colgroup>
+				<thead>
+					<tr>
+						<th>컬럼</th>
+						<th>아이템명<button class="fa fa-sort-down" aria-label="정렬"></button></th>
+						<th>판매단가</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td><button class="fa fa-plus" aria-label="아이템추가"></button>아이템 1</td>
+						<td>1,800</td>
+
+					</tr>
+					<tr class="line-move-active"> <!--  값을 입력할 때 class="line-move-active" 상태 적용 -->
+						<td><input class="column" type="text"></td>
+						<td><button class="fa fa-plus" aria-label="아이템추가"></button>아이템 2</td>
+						<td>1,800</td>
+
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input class="column" type="text"></td>
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="notification">
+			<p><strong>아이템 추가</strong> : 아이템 리스트의 컬럼 항목에 해당 값(수)을 입력 후 엔터(Enter)키 또는 아이템명 앞에 붙은 기호(<i class="fa fa-plus"></i>)를 클릭하여 컬럼을 추가합니다.</p>
+			<p><strong>아이템 삭제</strong> : 컬럼 리스트의 아이템명 항목에 아이템명 뒤에 붙은 기호(<i class="fa fa-close"></i>)를 클릭하여 컬럼을 삭제합니다.</p>
+		</div>
+	</article>
+</main>
+<!-- / Contents Area End-->
+
+<!--#include file="_inc/_ie.html"-->
+
+<!--#include file="_inc/_javascript.html"-->
+</body>
+</html>
