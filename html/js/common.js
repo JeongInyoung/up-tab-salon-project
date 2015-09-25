@@ -49,10 +49,8 @@
 
 	// IE 10, 11 체크
 	function checkSetClassPropIE() {
-		// IE 10 => 문서에서 ('MSIE 10')를 찾아서 class=ie10 를 적용
 		if (_ua.indexOf('MSIE 10') > -1) {
 			$html.addClass('lt-ie11 ie10'); // IE10 버전 체크하여 <html> 요소에 class=lt-ie11 ie10 을 적용
-		// IE 11 => 문서에서 ('rv:11') 를 찾아서 class=ie11 를 적용
 		} else if (_ua.indexOf('rv:11') > -1) {
 			$html.addClass('lt-ie11 ie11'); // IE11 버전 체크하여 <html> 요소에 class=lt-ie11 ie11 을 적용
 
@@ -86,9 +84,40 @@
 		containment: "#container"
 	});
 
-	// Global Navigation Bar 설정
-	$('#header . wrap .top-menu').iyNavigation(/*{
-		'class': 'active'
-	}*/);
+	// Select Box Style 설정
+	$('.select-style select').stbDropdown();
+
+	// Store & Designer 검색 input 요소 편집할 수 없게 설정
+	$( '[class$="-search-set"] li input[type=text]' ).attr('readonly', true);
+
+
+	// 토글 메뉴 플러그인
+	(function toggleShow(i) {
+
+		var toggleBtn = [
+			'[class$="-search-set"] li button',
+			'[class$="-hair-style-set"] li',
+		];
+
+		var togglePanel = [
+			'[class$="-search-set"] li ul',
+			'[class$="-hair-style-set"] li ul',
+		];
+
+		for (var i = [toggleBtn].length - 1; i >= 0; i--) {
+			$( toggleBtn[i] ).click(function() {
+				$(this).next().slideToggle('fast').parent().addClass('active').siblings().children
+				( togglePanel[i] ).hide().parent().removeClass('active');
+			});
+			return false;
+		};
+
+	})();
+
+	// $( '[class$="-search-set"] li button' ).click(function() {
+	// 	$(this).next().slideToggle('fast').parent().addClass('active').siblings().children
+	// 	( '[class$="-search-set"] li ul' ).hide().parent().removeClass('active');
+	// 	return false;
+	// });
 
 })(window, document, window.jQuery);

@@ -12,7 +12,7 @@
 			height: 100%;
 			text-align: center;
 			padding-top: 200px;
-			background: $bg-default;
+			background: $bg-default-purple;
 			z-index: 100000;
 			.title {
 				font-size: 45px;
@@ -33,7 +33,7 @@
 					vertical-align: middle;
 				}
 				span {
-					color: $font-color-table-th;
+					color: $font-color-yellow;
 					font-weight: bold;
 				}
 			}

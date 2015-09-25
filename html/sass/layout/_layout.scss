@@ -2,11 +2,7 @@
 // Common Style
 // =======================================
 #header, #footer, #container {
-	position: relative;
 	width: 100%;
-}
-#container {
-	min-height: 720px;
 }
 #header {
 	position: fixed;
@@ -46,6 +42,7 @@
 			[class^="tab-"] {
 				position: relative;
 				display: inline-block;
+				font-size: 12px;
 				color: #ccc;
 				min-width: 110px;
 				text-align: left;
@@ -59,7 +56,7 @@
 					top: 1px;
 					right: 6px;
 				}
-				&:hover, &:focus, &.active {
+				&:focus, &.selected {
 					color: inherit;
 					background: $bg-default;
 					border: 1px solid $bg-default;
@@ -90,6 +87,7 @@
 	.wrap {
 		.top-menu {
 			height: 100%;
+			font-size: 12px;
 			text-align: center;
 			> a {
 				float: left;
@@ -105,9 +103,9 @@
 					margin-right: 6px;
 					vertical-align: middle;
 				}
-				&:hover, &:focus, &.active {
+				&:hover, &:focus, &.selected {
 					color: #fff;
-					background: rgba(255, 255, 255, 0.2);
+					background: lighten($bg-nav-depth, 20%);
 					&:before {
 						color: #fff;
 					}
@@ -195,392 +193,701 @@
 #header {
 	.wrap {
 		.top-button {
-			@include span(2 last);
+			@include span(2 float last);
 			display: inline-block;
 			.search-button {
 				display: inline-block;
 			}
 			@include susy-breakpoint($tablet, 8) {
 				display: inline-block;
-				@include span(2 last);
+				@include span(2 float last);
 				.search-button {
 					display: none;
 				}
 			}
 			@include susy-breakpoint($desktop, 12) {
 				display: none;
-				@include span(6 last);
+				@include span(6 float last);
 			}
 		}
 	}
 }
+#container {
+	position: relative;
+	min-height: 680px;
+	padding-top: 40px;
+	background: #fff;
+	overflow: hidden;
+	clear: both;
+}
 #footer {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	height: 40px;
-	padding-top: 10px;
+	position: relative;
+	min-height: 40px;
 	border-top: 1px solid #fff;
-	.copyright {
-		font-family: Verdana;
-		font-style: normal;
-		text-align: center;
+	background: $bg-default;
+	overflow: hidden;
+	.wrap {
+		padding: 10px;
+		.copyright {
+			font-family: Verdana;
+			font-style: normal;
+			font-size: 12px;
+			text-align: center;
+		}
 	}
 }
 
 // =======================================
 // index.html (Store 검색)
 // =======================================
-.store-bg {
-	background: $bg-default;
-	height: 100vh;
-	.wrap {
-		position: relative;
-		height: 100%;
-		.store-box {
-			position: absolute;
-			top: 70px;
-			left: 50%;
+.store-box {
+	h1 {
+		font-size: 30px;
+		font-weight: normal;
+		text-align: center;
+		margin-bottom: 32px;
+	}
+}
+.store-box {
+	.search-set {
+		display: inline-block;
+		@include span(full);
+		overflow: hidden;
+		margin-bottom: 27px;
+		[class^="tab-"] {
+			display: inline-block;
+			float: left;
+			width: 50%;
+			height: 30px;
+			line-height: 30px;
 			text-align: center;
-			padding-left: 20px;
-			padding-right: 20px;
-			transform: translateX(-50%);
-			.search-set {
-				display: inline-block;
+			color: #999;
+			background: #fff;
+			&:focus {
+				color: $font-default;
+				background: #fdfdfd;
+			}
+			&.selected {
+				color: #fff;
+				background: $bg-default-purple;
+			}
+		}
+	}
+}
+.store-box {
+	.store-search-set {
+		> li {
+			position: relative;
+			margin-bottom: 10px;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			input {
+				font-size: 13px;
 				width: 100%;
-				overflow: hidden;
-				margin-bottom: 40px;
-				[class^="tab-"] {
-					display: inline-block;
-					float: left;
-					width: 50%;
-					height: 30px;
-					line-height: 30px;
-					color: #999;
-					background: #fff;
-					&:hover, &:focus, &.active {
-						color: #fff;
-						background: $font-color-active;
-					}
+				height: 50px;
+				padding-left: 15px;
+				padding-right: 70px;
+				border: 0px;
+				cursor: default;
+				@include susy-breakpoint($tablet, 8) {
+					font-size: 14px;
+					padding-left: 20px;
 				}
 			}
-			h1 {
-				font-size: 30px;
-				font-weight: normal;
-				margin-top: 17px;
-				margin-bottom: 40px;
+			.checkbox {
+				text-align: left;
+				margin-bottom: 14px;
+				.store-label {
+					color: #fff;
+				}
 			}
-			li {
-				position: relative;
-				margin-bottom: 10px;
-				input {
-					font-size: 13px;
-					width: 100%;
-					height: 50px;
-					padding-left: 15px;
-					padding-right: 70px;
-					border: 0px;
-					@include susy-breakpoint($tablet, 8) {
-						font-size: 14px;
-						padding-left: 20px;
+			.btn-default {
+				font-size: 24px;
+				width: 100%;
+				height: 50px;
+				line-height: 50px;
+			}
+			button {
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 50px;
+				height: 50px;
+				border-left: 1px solid $bg-default;
+				&:before {
+					font-size: 20px;
+					color: $font-default;
+				}
+				&:hover, &:focus {
+					background: #faf6fb;
+					&:before {
+						color: $bg-default-purple;
 					}
 				}
-				.checkbox {
-					text-align: left;
-					margin-bottom: 14px;
-					.store-label {
-						color: #fff;
-					}
-				}
-				.btn-default {
+				&.btn-zipcode:before {
+					font-family: 'FontAwesome';
+					content: "\f041";
 					font-size: 24px;
-					width: 100%;
-					height: 50px;
-					line-height: 50px;
+				}
+				&.btn-select:before {
+					font-family: 'FontAwesome';
+					content: "\f0c4";
+				}
+				&.btn-detail:before {
+					font-family: 'FontAwesome';
+					content: "\f0fe";
+				}
+				&.btn-date:before {
+					font-family: 'FontAwesome';
+					content: "\f073";
+				}
+				&.btn-time:before {
+					font-family: 'FontAwesome';
+					content: "\f017";
+					font-size: 24px;
+				}
+			}
+		}
+	}
+}
+.store-box {
+	.store-search-set {
+		> li {
+			> ul {
+				display: none;
+				max-height: 100px;
+				overflow-y: auto;
+			}
+			&:focus, &.active {
+				> ul {
+					display: block;
 				}
 				button {
-					position: absolute;
-					top: 0;
-					right: 0;
-					width: 50px;
-					height: 50px;
-					border-left: 1px solid $bg-default;
+					border-top: 3px solid $font-default;
+					border-left: 3px solid $font-default;
+					border-right: 3px solid $font-default;
 					&:before {
-						font-size: 20px;
-						color: $font-default;
+						color: $font-color-purple;
 					}
-					&:hover, &:focus, &.active {
-						&:before {
-							color: $font-color-active;
+				}
+			}
+			.btn-default {
+				margin-left: 0;
+			}
+		}
+	}
+}
+.store-box {
+	.store-search-set {
+		> li {
+			> ul {
+				> li {
+					background: $font-default;
+					color: #a1a1a1;
+					a {
+						display: block;
+						max-width: 100%;
+						padding: 3px 20px;
+					}
+					&:first-child {
+						padding-top: 12px;
+					}
+					&:last-child {
+						padding-bottom: 12px;
+					}
+					&:focus, &.selected {
+						a {
+							color: #fff;
 						}
 					}
-					&.store-zipcode:before {
-						font-family: 'FontAwesome';
-						content: "\f041";
-						font-size: 24px;
-					}
-					&.store-select:before {
-						font-family: 'FontAwesome';
-						content: "\f0c4";
-					}
-					&.store-detail:before {
-						font-family: 'FontAwesome';
-						content: "\f0fe";
-					}
-					&.store-date:before {
-						font-family: 'FontAwesome';
-						content: "\f073";
-					}
-					&.store-time:before {
-						font-family: 'FontAwesome';
-						content: "\f017";
-						font-size: 24px;
+					&.select-style {
+						text-align: center;
+						.stb-select-container {
+							min-width: 75px;
+							border: 0;
+							color: #fff;
+							> span {
+								overflow: inherit;
+							}
+							&:hover, &:focus, &.selected {
+								&::after {
+									color: #fff;
+									opacity: 1;
+								}
+							}
+							.stb-select {
+								top: -5px;
+								max-height: 40px;
+								border: 0;
+								> li {
+									padding-top: 0;
+									padding-bottom: 0;
+								}
+							}
+						}
 					}
 				}
 			}
 		}
 	}
 }
-.store-bg {
+#container.store-bg {
+	background: $bg-default;
+	padding-bottom: 0;
 	.wrap {
+		padding-top: 22px;
+		padding-bottom: 22px;
+		overflow: hidden;
 		.store-box {
 			@include span(4);
-			@include susy-breakpoint($tablet, 8) {
-				@include span(4);
-				top: 50%;
-				transform: translate(-50%, -50%);
-				padding: 0;
+		}
+		@include susy-breakpoint($tablet, 8) {
+			padding-top: 42px;
+			padding-bottom: 42px;
+			.store-box {
+				@include span(4 at 3);
 				.search-set {
 					display: none;
 				}
 			}
-			@include susy-breakpoint($desktop, 12) {
-				@include span(4);
+		}
+		@include susy-breakpoint($desktop, 12) {
+			padding-top: 105px;
+			padding-bottom: 105px;
+			.store-box {
+				@include span(4 at 5);
 			}
 		}
 	}
 }
 
 // =======================================
-// employee-list.html (사원 - 사원리스트)
+// designer-search.html (Designer 검색)
 // =======================================
-.employee-list {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1) {
-				width: 60px;
-			}
-			col:nth-of-type(2),
-			col:nth-of-type(3) {
-				width: 250px;
-			}
-			col:nth-of-type(4),
-			col:nth-of-type(6) {
-				width: 120px;
+.designer-bg {
+	@extend .store-bg;
+}
+.designer-box {
+	@extend .store-box;
+	.designer-search-set {
+		@extend .store-search-set;
+		> li {
+			button {
+				&.designer-select:before {
+					font-family: 'iconfont';
+					content: '\E001';
+				}
 			}
 		}
 	}
 }
 
 // =======================================
-// item-item-list.html (아이템 - 아이템리스트)
+// book-list.html (Book a Service - Search Salon)
 // =======================================
-.item-item-list {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1) {
-				width: 60px;
-			}
+.recommend {
+	width: 100%;
+	background: {
+			image: url("/Common/images/common/squairy_light_@2X.png");
+			size: 50%;
+		}
+	@include susy-breakpoint($tablet, 8) {
+		background: {
+			image: url("/Common/images/common/squairy_light_@2X.png");
+			size: 25%
+		}
+	}
+	@include susy-breakpoint($desktop, 12) {
+		background: {
+			image: url("/Common/images/common/squairy_light.png");
 		}
 	}
 }
 
-// =======================================
-// item-firm-support.html (아이템 - 회사지원금)
-// =======================================
-.item-firm-support {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1) {
-				width: 60px;
-			}
-			col:nth-of-type(4),
-			col:nth-of-type(5),
-			col:nth-of-type(6) {
-				width: 150px;
-			}
+.list-type {
+	> h5 {
+		font-size: 14px;
+		font-weight: bold;
+		color: $font-color-purple;
+		text-align: center;
+		margin-bottom: 8px;
+		@include susy-breakpoint($tablet, 4) {
+			font-size: 12px;
+			text-align: left;
+			margin-bottom: 4px;
 		}
 	}
 }
-
-// =======================================
-// automat-location.html (자판기 - 로케이션)
-// =======================================
-.automat-location {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1) {
-				width: 60px;
-			}
-			col:nth-of-type(4),
-			col:nth-of-type(5),
-			col:nth-of-type(6) {
-				width: 150px;
-			}
-		}
-	}
-}
-
-// =======================================
-// automat-column.html (자판기 - 컬럼)
-// =======================================
-.automat-column {
-	[class^="table-group-"] {
+.list-type {
+	.select-style {
 		position: relative;
-		.table-title {
-			font-size: 16px;
-			padding-bottom: 6px;
-			&:before {
-				@extend .sub-top-title;
-				font-size: 14px;
+		text-align: center;
+		margin-bottom: 15px;
+		.stb-select-container {
+			width: 235px;
+			font-size: 12px;
+			@include susy-breakpoint($mobile, 6) {
+				width: 100%;
 			}
-		}
-		.table-set {
-			colgroup {
-				col:nth-of-type(1) {
-				width: 60px;
-				}
-			}
-			tbody {
-				tr.line-move-active {
-					outline:2px solid $font-color-active;
-					outline-offset: -1px;
-				}
-				td:nth-of-type(2) {
-					text-align: left;
-				}
-				td:nth-of-type(3) {
-					text-align: right;
-				}
+			@include susy-breakpoint($tablet, 8) {
+				width: 150px;
 			}
 		}
 	}
-	.table-group-left {
-		@include span(6);
-		padding-right: 10px;
-	}
-	.table-group-right {
-		@include span(6 last);
-		padding-left: 10px;
-	}
-	.column-move {
-		position: absolute;
-		top: 191px;
-		left: 49.35%;
-		button.fa {
-			display: block;
-			font-size: 20px;
-			color: $font-color-nav;
-			&:hover, &:focus, &.active {
-				color: $font-color-active;
-			}
+	@include susy-breakpoint($tablet, 8) {
+		.select-style {
+			position: absolute;
+			right: 0;
+			top: 13px;
 		}
 	}
-	.table-box {
-		background: #363636;
-		height: 40px;
-		padding: 0 10px;
+	@include susy-breakpoint($desktop, 12) {
+		.select-style {
+			top: 10px;
+		}
+	}
+}
+.list-type {
+	position: relative;
+	padding: 27px 20px 30px 20px;
+	overflow: hidden;
+	> ul {
 		overflow: hidden;
-		[class^="table-box-"] {
-			color: $font-color-nav;
-			line-height: 40px;
-			span {
-				font-size: 14px;
-				color: $font-color-active;
+		clear: both;
+	}
+	@include susy-breakpoint(500px, 4) {
+		@include container(500px);
+		padding-left: 0;
+		padding-right: 0;
+	}
+	@include susy-breakpoint($tablet, 8) {
+		@include container($tablet);
+	}
+	@include susy-breakpoint($desktop, 12) {
+		@include container($desktop);
+	}
+}
+.list-img-box {
+	width: 235px;
+	background: #fff;
+	border: 1px solid $border-gray;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	.col-3 {
+		overflow: hidden;
+		> img {
+			width: 235px;
+			height: 235px;
+		}
+	}
+	.col-3-info {
+		text-align: left;
+		padding: 6px  10px;
+		.title {
+			color: #333;
+			max-width: 120px;
+			@extend %text-wrap;
+		}
+		.star {
+			float: right;
+			color: $font-color-purple;
+			letter-spacing: -0.1em;
+		}
+		.add {
+			color: #999;
+			max-width: 208px;
+			@extend %text-wrap;
+			display: block;
+			&:before {
+				font-family: 'FontAwesome';
+				content: "\f041";
+				font-size: 18px;
+				padding-right: 6px;
 			}
 		}
-		.table-box-left {
+	}
+}
+.list-type {
+	> ul {
+		> li {
+			margin-bottom: 20px;
+		}
+		@include susy-breakpoint($mobile, 6) {
+			> li {
+				@include gallery(3 of 6);
+			}
+		}
+		@include susy-breakpoint($tablet, 8) {
+			> li {
+				@include gallery(3 of 9);
+			}
+		}
+		@include susy-breakpoint($desktop, 12) {
+			> li {
+				@include gallery(3 of 12);
+			}
+		}
+	}
+	.btn-more {
+		width: 235px;
+		font-size: 12px;
+		line-height: 28px;
+		border: 1px solid $border-gray;
+		i.fa {
+			margin-left: 10px;
+			vertical-align: text-top;
+		}
+		@include susy-breakpoint($mobile, 6) {
+			@include span(6);
+		}
+		@include susy-breakpoint($tablet, 8) {
+			@include span(8);
+		}
+		@include susy-breakpoint($desktop, 12) {
+			@include span(6 at 4);
+		}
+	}
+}
+
+// =======================================
+// book-store-about.html (Book a Service - Select Salon)
+// =======================================
+.title-btn-bg {
+	position: relative;
+	@include span(full);
+	background: $bg-default-purple;
+	border-top: 1px solid #a547c0;
+	.title-btn {
+		line-height: 56px;
+		> h3 {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 100%;
+			color: #eade25;
+			@include susy-breakpoint($mobile, 6) {
+				font-size: initial;
+			}
+		}
+		[class^="btn-"] {
+			position: relative;
+			font-size: 12px;
+			color: #fff;
+			padding: 0 20px;
+			&:before {
+				position: absolute;
+				font-family: 'FontAwesome';
+				font-size: 24px;
+			}
+		}
+		.btn-left {
 			float: left;
+			&:before {
+				content: "\f104";
+				top: -2px;
+				left: 0;
+			}
 		}
-		.table-box-right {
+		.btn-right {
 			float: right;
-		}
-		.input-area {
-			float: right;
-			margin-top: 5px;
-			margin-right: -5px;
-		}
-	}
-}
-
-// =======================================
-// report-sale-list.html (리포트 - 판매현황)
-// =======================================
-.report-sale-list {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1),
-			col:nth-of-type(2),
-			col:nth-of-type(4),
-			col:nth-of-type(12),
-			col:nth-of-type(13) {
-				min-width: 80px;
-			}
-			col:nth-of-type(3),
-			col:nth-of-type(5),
-			col:nth-of-type(6) {
-				min-width: 100px;
+			&:before {
+				content: "\f105";
+				top: -2px;
+				right: 0;
 			}
 		}
 	}
 }
-
-// =======================================
-// report-time-list.html (리포트 - 시간별)
-// =======================================
-.report-time-list {
-	.table-set {
-		colgroup {
-			col:nth-of-type(1) {
-				width: 60px;
+.salon-tab {
+	position: relative;
+	height: 40px;
+	clear: both;
+	> nav {
+		position: absolute;
+		left: 50%;
+		transform: translateX( -50%);
+		padding: 0;
+		> a {
+			float: left;
+			display: block;
+			font-size: 12px;
+			text-align: center;
+			min-width: 33.33%;
+			height: 100%;
+			line-height: 36px;
+			padding: 0 10px;
+			border-top: 4px solid #fff;
+			&:hover, &:focus {
+				border-top: 4px solid #e8e8e8;
 			}
+			&.selected {
+				border-top: 4px solid #dfbde9;
+			}
+		}
+	}
+}
+.salon-bg {
+	position: relative;
+	height: 240px;
+	text-align: center;
+	overflow: hidden;
+	img {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		min-width: 1200px;
+		width: auto;
+		@include susy-breakpoint($desktop, 12) {
+			width: 100%;
+			height: auto;
+		}
+	}
+}
+.about-list {
+	.box-01 {
+		background: #f7f7f7;
+		padding: 10px 20px;
+		overflow: hidden;
+		> h3 {
+			font-size: 24px;
+			color: $font-color-purple;
+			line-height: 2;
+			padding-top: 20px;
+			border-bottom: 1px solid $border-gray;
+			overflow: hidden;
+			.star {
+				display: block;
+				font-size: 18px;
+				line-height: 1;
+				margin-bottom: 10px;
+				.fa-star:before {
+					letter-spacing: -0.2em;
+				}
+				.fa-star-o:before {
+					letter-spacing: 0.2em;
+				}
+			}
+			@include susy-breakpoint($mobile, 6) {
+			padding-top: 0;
+				.star {
+					float: right;
+					line-height: 3;
+					margin-bottom: 0;
+				}
+			}
+		}
+		dl {
+			padding-top: 20px;
+			padding-bottom: 20px;
+			dt {
+				font-size: 12px;
+				color: #999;
+				font-weight: bold;
+			}
+			dd {
+				font-size: 18px;
+				line-height: 1.5;
+				padding-bottom: 20px;
+				&:last-child {
+					padding-bottom: 0;
+				}
+			}
+		}
+	}
+	.box-02 {
+		padding: 10px 20px;
+		border: 0;
+		> h3 {
+			font-size: 18px;
+			i.fa {
+				font-size: 24px;
+				vertical-align: middle;
+				margin-right: 4px;
+			}
+		}
+		ol {
+			padding-top: 26px;
+			li {
+				font-size: 12px;
+				padding-bottom: 10px;
+				line-height: 20px;
+				span {
+					background: $bg-default;
+					display: inline-block;
+					width: 36px;
+					color: #333;
+					text-align: center;
+					margin-right: 16px;
+				}
+				&:first-child {
+					span {
+						background: #f3acac;
+					}
+				}
+				&:last-child {
+					span {
+						background: #c1dce7;
+					}
+				}
+			}
+		}
+	}
+	.box-03 {
+		width: 100%;
+		height: 300px;
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+	}
+}
+.about-list.wrap {
+	max-width: 100%;
+	padding: 0;
+	overflow: hidden;
+	[class^="box-"] {
+		min-height:300px;
+	}
+	@include susy-breakpoint($mobile, 6) {
+		.box-01 {
+			clear: both;
+		}
+		.box-02 {
+			@include span(3);
+		}
+		.box-03 {
+			@include span(3 float last);
+			padding-top: 20px;
+			padding-bottom: 20px;
+			padding-right: 20px;
+			iframe {
+				border: 1px solid $border-gray;
+			}
+		}
+	}
+	@include susy-breakpoint($desktop, 12) {
+		@include container($desktop);
+		margin-top: 40px;
+		margin-bottom: 40px;
+		.box-01 {
+			@include span(6);
+		}
+		.box-02 {
+			@include span(3);
+			border: 1px solid $border-gray;
+		}
+		.box-03 {
+			@include span(3 float last);
+			padding: 0;
 		}
 	}
 }
 
 // =======================================
-// report-date-list.html (리포트 - 일자별)
+// book-store-about.html (Book a Service - Select Salon)
 // =======================================
-.report-date-list {
-	.table-set {
-		@extend .item-item-list;
-	}
-}
-
-// =======================================
-// report-item-list.html (리포트 - 아이템별)
-// =======================================
-.report-item-list {
-	.table-set {
-		@extend .item-item-list;
-	}
-}
-
-// =======================================
-// report-employee-list.html (리포트 - 사원별)
-// =======================================
-.report-employee-list {
-	.table-set {
-		@extend .item-item-list;
-	}
-}
-
-// =======================================
-// report-automat-list.html (리포트 - 자판기별)
-// =======================================
-.report-automat-list {
-	.table-set {
-		@extend .item-item-list;
-	}
-}

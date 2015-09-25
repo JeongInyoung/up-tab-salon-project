@@ -1,7 +1,7 @@
 {
-  "name": "ssi-sass-server-master",
+  "name": "Jeong-inyoung_Project",
   "version": "0.0.2",
-  "description": "SSI, SASS 프로젝트 관리",
+  "description": "반응형 프로젝트 관리",
   "main": "gulpfile.js",
   "dependencies": {
     "gulp": "^3.8.11"
@@ -18,7 +18,8 @@
     "gulp-if": "^1.2.5",
     "gulp-imagemin": "^2.3.0",
     "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^1.0.5",
+    "gulp-ruby-sass": "^2.0.2",
+    "gulp-sass": "^2.0.4",
     "gulp-shell": "^0.4.2",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-uglify": "^1.2.0",

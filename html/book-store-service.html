@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<!--#include file="_inc/_top-settings.html"-->
+<body>
+<!--#include file="_inc/_skip-navigation.html"-->
+
+<!-- Header Area -->
+<header id="header">
+<!--#include file="_inc/_header.html"-->
+</header>
+<!-- / Header Area End -->
+
+<!-- Contents Area-->
+<main id="container">
+	<!-- 진행 단계 표시 -->
+	<div class="progress">
+		<ol class="wrap">
+			<li><span>Search Salon</span></li>
+			<li class="active"><span>Select Salon</span></li><!-- 단계별 흐름에 따라 class="active" 삽입 -->
+			<li><span>booking</span></li>
+			<li><span>Comfirm</span></li>
+		</ol>
+	</div>
+	<!-- / 진행 단계 표시 End -->
+	<!-- 페이지 전환 버튼 -->
+	<div class="title-btn-bg">
+		<div class="title-btn wrap">
+			<h3>Suite Styles Salon</h3>
+			<a href="book-list.html" class="btn-left">Back</a>
+			<a href="/" class="btn-right">Select</a>
+		</div>
+	</div>
+	<!-- / 페이지 전환 버튼 End -->
+	<!-- Salon About -->
+	<div class="salon-tab">
+		<nav class="wrap">
+			<a href="book-store-about.html">Salon About</a>
+			<a class="selected" href="book-store-service.html">Service</a>
+			<a href="book-store-reviews.html">Reviews</a>
+		</nav>
+	</div>
+	<div class="salon-tab-panel">
+		<ul class="-search-set">
+			<li>
+				<input type="text" placeholder="zipcode" aria-label="zipcode">
+				<button class="btn-zipcode"></button>
+				<ul>
+					<li><a href="">Australia</a></li>
+					<li><a href="">Canada</a></li>
+					<li><a href="">United Kingdom</a></li>
+					<li class="selected"><a href="">United States of America</a></li><!-- 선택된 요소의 <li>에 class="selected" 추가 설정 -->
+				</ul>
+			</li>
+			<li>
+				<input type="text" placeholder="Select Service" aria-label="Select Service">
+				<button class="btn-select"></button>
+				<ul>
+					<li><a href="">Select Service</a></li>
+					<li><a href="">Select Service</a></li>
+					<li><a href="">Select Service</a></li>
+				</ul>
+			</li>
+			<li>
+				<input type="text" placeholder="Detail Service (Optional)" aria-label="Detail Service (Optional)">
+				<button class="btn-detail"></button>
+				<ul>
+					<li><a href="">Detail Service (Optional)</a></li>
+					<li><a href="">Detail Service (Optional)</a></li>
+					<li><a href="">Detail Service (Optional)</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<!-- / Salon About End -->
+</main>
+<!-- / Contents Area End-->
+
+<!-- Footer Area -->
+<footer id="footer">
+	<!--#include file="_inc/_footer.html"-->
+</footer>
+<!-- / Footer Area End -->
+
+<!--#include file="_inc/_ie.html"-->
+
+<!--#include file="_inc/_javascript.html"-->
+</body>
+</html>
