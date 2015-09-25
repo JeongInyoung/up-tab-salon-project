@@ -295,6 +295,11 @@
 					padding-left: 20px;
 				}
 			}
+			> ul {
+				display: none;
+				max-height: 150px;
+				overflow-y: auto;
+			}
 			.checkbox {
 				text-align: left;
 				margin-bottom: 14px;
@@ -306,8 +311,15 @@
 				font-size: 24px;
 				width: 100%;
 				height: 50px;
+				margin-left: 0;
 				line-height: 50px;
 			}
+		}
+	}
+}
+.store-box {
+	.store-search-set {
+		> li {
 			button {
 				position: absolute;
 				top: 0;
@@ -319,7 +331,7 @@
 					font-size: 20px;
 					color: $font-default;
 				}
-				&:hover, &:focus {
+				&:hover {
 					background: #faf6fb;
 					&:before {
 						color: $bg-default-purple;
@@ -348,32 +360,13 @@
 					font-size: 24px;
 				}
 			}
-		}
-	}
-}
-.store-box {
-	.store-search-set {
-		> li {
-			> ul {
-				display: none;
-				max-height: 100px;
-				overflow-y: auto;
-			}
-			&:focus, &.active {
-				> ul {
-					display: block;
+			button.active {
+				border-top: 3px solid $font-default;
+				border-left: 3px solid $font-default;
+				border-right: 3px solid $font-default;
+				&:before {
+					color: $font-color-purple;
 				}
-				button {
-					border-top: 3px solid $font-default;
-					border-left: 3px solid $font-default;
-					border-right: 3px solid $font-default;
-					&:before {
-						color: $font-color-purple;
-					}
-				}
-			}
-			.btn-default {
-				margin-left: 0;
 			}
 		}
 	}
@@ -488,23 +481,8 @@
 // =======================================
 .recommend {
 	width: 100%;
-	background: {
-			image: url("/Common/images/common/squairy_light_@2X.png");
-			size: 50%;
-		}
-	@include susy-breakpoint($tablet, 8) {
-		background: {
-			image: url("/Common/images/common/squairy_light_@2X.png");
-			size: 25%
-		}
-	}
-	@include susy-breakpoint($desktop, 12) {
-		background: {
-			image: url("/Common/images/common/squairy_light.png");
-		}
-	}
+	@extend %bg-common;
 }
-
 .list-type {
 	> h5 {
 		font-size: 14px;
@@ -889,5 +867,72 @@
 }
 
 // =======================================
-// book-store-about.html (Book a Service - Select Salon)
+// book-store-service.html (Book a Service - Service)
 // =======================================
+.hair-style-set {
+	> li {
+		color: #fff;
+		background: #555;
+		border-bottom: 1px solid #fff;
+		&:last-child {
+			border-bottom: 0;
+		}
+		> a {
+			font-size: 16px;
+			padding: 0 20px;
+			line-height: 60px;
+		}
+		.btn-down {
+			float: right;
+			&:before {
+				font-family: 'FontAwesome';
+				content: "\f107";
+				font-size: 24px;
+				line-height: 60px;
+				padding: 0 30px;
+			}
+		}
+	}
+}
+.hair-style-set {
+	> li {
+		> div {
+			@extend %bg-common;
+			display: none;
+		}
+		&:first-child {
+			> div {
+				display: block;
+			}
+		}
+		&:focus, &.active {
+			.btn-down:before {
+				content: "\f106";
+				line-height: 58px;
+			}
+			> div {
+				display: block;
+			}
+		}
+	}
+}
+.hair-style-set {
+	> li {
+		> div {
+			> ul {
+				padding: 30px;
+				> li {
+					display: inline-block;
+					.hair-img {
+						width: 140px;
+						height: 140px;
+						img {
+							max-width: 100%;
+							max-height: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

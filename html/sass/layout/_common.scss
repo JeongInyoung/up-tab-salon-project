@@ -176,100 +176,22 @@ input, select, textarea {
 }
 
 // =======================================
-// Table Style
+// Background Style
 // =======================================
-.table-set {
-	width: 100%;
-	th, td {
-		text-align: center;
-		height: 30px;
-		padding-top: 5px;
-		padding-bottom: 5px;
-	}
-	caption {
-		display: none;
-	}
-	colgroup {
-		col {
-			width: auto;
+%bg-common {
+	background: {
+			image: url("/Common/images/common/squairy_light_@2X.png");
+			size: 50%;
+		}
+	@include susy-breakpoint($tablet, 8) {
+		background: {
+			image: url("/Common/images/common/squairy_light_@2X.png");
+			size: 25%
 		}
 	}
-	thead {
-		th {
-			border-bottom: 2px solid #777;
-			button.fa {
-				font-size: 13px;
-				vertical-align: top;
-				padding: 0 4px;
-			}
-		}
-	}
-	tbody {
-		th {
-			font-weight: bold;
-			color: #333;
-			background: #e1e1e1;
-		}
-		td {
-			a.id-link {
-				color: $font-color-purple;
-				&:focus, &:active, &:hover {
-					text-decoration: underline;
-				}
-			}
-		}
-	}
-	tr:nth-child(2n) {
-		td {
-
-			background: #fbfaf5;
-		}
-	}
-	th {
-		overflow: hidden;
-		color: $font-color-table-th;
-		word-break: normal;
-		padding-right: 6px;
-		padding-left: 6px;
-		border: 1px solid #c5c5c5;
-		background: #f7f9fa;
-	}
-	td {
-		overflow: hidden;
-		word-break: normal;
-		padding-right: 5px;
-		padding-left: 5px;
-		border: 1px solid #c5c5c5;
-		background: #fff;
-		button {
-			&.fa-plus {
-				@extend .fa-close;
-				margin-left: 2px;
-				margin-right: 6px;
-			}
-			&.fa-close {
-				margin-left: 10px;
-				color: $font-color-nav;
-				&:focus, &:active, &:hover {
-					color: $font-color-purple;
-				}
-			}
-		}
-		[class^="btn-"].fa-plus {
-			font-size: 12px;
-			min-width: 24px;
-			height: 19px;
-			line-height: 1.5;
-			border-radius: 4px;
-		}
-		.number {
-			width: 100%;
-			height: 18px;
-			text-align: right;
-		}
-		.column {
-			@extend .number;
-			text-align: center;
+	@include susy-breakpoint($desktop, 12) {
+		background: {
+			image: url("/Common/images/common/squairy_light.png");
 		}
 	}
 }

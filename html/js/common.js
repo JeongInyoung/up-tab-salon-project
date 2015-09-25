@@ -90,34 +90,43 @@
 	// Store & Designer 검색 input 요소 편집할 수 없게 설정
 	$( '[class$="-search-set"] li input[type=text]' ).attr('readonly', true);
 
-
 	// 토글 메뉴 플러그인
 	(function toggleShow(i) {
 
+		// 토글 메뉴 버튼
 		var toggleBtn = [
-			'[class$="-search-set"] li button',
-			'[class$="-hair-style-set"] li',
-		];
+				$('.store-search-set li button'),
+				$('.designer-search-set li button'),
+				$('.hair-style-set li button'),
+			],
+		// 토글 패널
+			togglePanel = [
+				$('.store-search-set li ul'),
+				$('.designer-search-set li ul'),
+				$('.hair-style-set li div'),
+			];
 
-		var togglePanel = [
-			'[class$="-search-set"] li ul',
-			'[class$="-hair-style-set"] li ul',
-		];
-
-		for (var i = [toggleBtn].length - 1; i >= 0; i--) {
-			$( toggleBtn[i] ).click(function() {
-				$(this).next().slideToggle('fast').parent().addClass('active').siblings().children
-				( togglePanel[i] ).hide().parent().removeClass('active');
+		// 토글 패널 제어 : 'active' Class명으로 패널 스타일 구현
+		for (var i = 0; i <= toggleBtn.length-1; i++) {
+			toggleBtn[i].click(function(e) {
+				e.preventDefault();
+				if(!$(this).parent().hasClass('active')) {
+					toggleBtn[0].removeClass('active');
+					toggleBtn[1].removeClass('active');
+					toggleBtn[2].removeClass('active');
+					togglePanel[0].filter(':visible').slideUp('normal');
+					togglePanel[1].filter(':visible').slideUp('normal');
+					togglePanel[2].filter(':visible').slideUp('normal');
+					$(this).addClass('active').next().stop(true,true).slideDown('normal');
+					console.log($(this).addClass('active'));
+				} else {
+					$(this).removeClass('active');
+					$(this).next().stop(true,true).slideUp('normal');
+				}
+				return;
 			});
-			return false;
 		};
 
 	})();
-
-	// $( '[class$="-search-set"] li button' ).click(function() {
-	// 	$(this).next().slideToggle('fast').parent().addClass('active').siblings().children
-	// 	( '[class$="-search-set"] li ul' ).hide().parent().removeClass('active');
-	// 	return false;
-	// });
 
 })(window, document, window.jQuery);
