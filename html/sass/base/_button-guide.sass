@@ -2,21 +2,20 @@
 // Button Style
 // =======================================
 
-=btn-default ($min-width: null, $bg-color: null, $font-color: null, $darken-percent: 5%, $ml: null)
+=btn-default ($miw: 100, $bg-color: $font-color-purple, $fz: 14, $color: #fff, $percent: 5%, $ml: 0)
 	display: inline-block
-	font-size: 14px
-	color: $font-color
+	font-size: $fz+px
+	color: $color
 	text-align: center
-	min-width: $min-width
-	height: 30px
-	line-height: 2
+	min-width: $miw+px
+	line-height: ($fz*2)+px
 	padding: 0 10px
-	border: 1px solid darken($bg-color, $darken-percent)
+	border: 1px solid darken($bg-color, $percent)
 	background: $bg-color
 	margin-left: $ml
 	&:hover,
 	&:focus
-		background: darken($bg-color, $darken-percent)
+		background: darken($bg-color, $percent)
 		text-shadow: 1px 1px 0 darken($bg-color, 15%)
 	.fa, .icon
 		font-size: 16px
@@ -25,16 +24,16 @@
 
 // 기본 버튼
 .btn-default
-	+btn-default($min-width: 100px, $bg-color: $font-color-purple, $font-color: #fff, $ml: 4px)
+	+btn-default
 // 등록, 저장 버튼
 .btn-signup
-	+btn-default($min-width: 100px, $bg-color: #5398d7, $font-color: #fff, $ml: 4px)
+	+btn-default($bg-color: #e66815)
 // 취소 버튼
 .btn-cancle
-	+btn-default($min-width: 100px, $bg-color: #697783, $font-color: #fff, $ml: 4px)
+	+btn-default($bg-color: #697783)
 // 엑셀 다운 버튼
 .btn-excel
-	+btn-default($min-width: 100px, $bg-color: #1e7145, $font-color: #fff, $ml: 4px)
+	+btn-default($bg-color: #1e7145)
 // 더보기 버튼
 .btn-more
-	+btn-default($min-width: 100px, $bg-color: #fff, $font-color: 333, $darken-percent: 1%)
+	+btn-default($bg-color: #fff, $color: #333, $percent: 1%, $ml: 0)

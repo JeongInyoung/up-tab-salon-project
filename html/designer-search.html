@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <!--#include file="_inc/_top-settings.html"-->
-<body>
+
+<!-- Skip Navigation -->
 <!--#include file="_inc/_skip-navigation.html"-->
+<!-- / Skip Navigation End -->
 
 <!-- Header Area -->
-<header id="header">
 <!--#include file="_inc/_header.html"-->
-</header>
 <!-- / Header Area End -->
 
 <!-- Contents Area-->
@@ -21,7 +21,8 @@
 			<ul class="designer-search-set">
 				<li>
 					<input type="text" placeholder="zipcode" aria-label="zipcode">
-					<button class="btn-zipcode"></button>
+					<button class="fa fa-close input-clear active"></button>
+					<button class="toggle btn-zipcode"></button>
 					<ul>
 						<li><a href="">Australia</a></li>
 						<li><a href="">Canada</a></li>
@@ -31,7 +32,8 @@
 				</li>
 				<li>
 					<input type="text" placeholder="Select Designer" aria-label="Select Designer">
-					<button class="designer-select"></button>
+					<button class="fa fa-close input-clear"></button>
+					<button class="toggle designer-select"></button>
 					<ul>
 						<li><a href="">Designer</a></li>
 						<li><a href="">Designer</a></li>
@@ -41,7 +43,8 @@
 				<li>
 					<input type="text" placeholder="Jul 20. 2015" aria-label="date">
 					<!-- 선택된 "날자 설정"을 input 속성 placeholder 담아주세요 -->
-					<button class="btn-date"></button>
+					<button class="fa fa-close input-clear active"></button>
+					<button class="toggle btn-date"></button>
 					<!-- 날자 설정 -->
 					<ul>
 						<li class="select-style">
@@ -103,7 +106,8 @@
 				<li>
 					<input type="text" placeholder="9:00 AM" aria-label="time">
 					<!-- 선택된 "시간 설정"을 input 속성 placeholder 담아주세요 -->
-					<button class="btn-time"></button>
+					<button class="fa fa-close input-clear active"></button>
+					<button class="toggle btn-time"></button>
 					<!-- 시간 설정 -->
 					<ul>
 						<li class="select-style">
@@ -144,13 +148,13 @@
 <!-- / Contents Area End-->
 
 <!-- Footer Area -->
-<footer id="footer">
-	<!--#include file="_inc/_footer.html"-->
-</footer>
+<!--#include file="_inc/_footer.html"-->
 <!-- / Footer Area End -->
 
+<!-- windows XP 또는 ie9 이하 브라우저 업그레이드 권장 안내 -->
 <!--#include file="_inc/_ie.html"-->
 
+<!-- Javascript & jQuery Plugin 압축 -->
 <!--#include file="_inc/_javascript.html"-->
 </body>
 </html>

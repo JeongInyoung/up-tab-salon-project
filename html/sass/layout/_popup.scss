@@ -5,7 +5,7 @@
 	width: 100%;
 	height: 100%;
 	text-align: left;
-	background-color: rgba(#000, .1);
+	background-color: rgba(#000, .55);
 	opacity: 0;
 	visibility: hidden;
 	overflow-y: hidden;
@@ -18,53 +18,52 @@
 	}
 	.container {
 		position: relative;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		width: 100%;
-		max-width: 370px;
-		min-width: 300px;
+		top: 6.5%;
+		max-width: 100%;
+		min-width: 280px;
 		min-height: 250px;
 		background: #fff;
-		border: 1px solid $bg-default;
+		border: 1px solid $bg-default-purple;
 		-ms-touch-action: none;
 		touch-action: none;
+		margin: 0 20px;
+		box-sizing: content-box;
+		@include susy-breakpoint($mobile, 6) {
+			@include wh-center($position: relative);
+			max-width: 360px;
+		}
 		.popup-title {
+			font-size: 18px;
+			color: #fff;
 			position: relative;
 			max-width: 100%;
-			height: 36px;
 			line-height: 2.5;
-			color: #fff;
-			padding-left: 10px;
+			padding-left: 20px;
 			padding-right: 10px;
-			background: $bg-default;
+			background: $bg-default-purple;
 		}
 		.fa-close {
 			position: absolute;
-			top: 10px;
-			right: 10px;
-			font-size: 16px;
+			top: 0;
+			right: 20px;
+			font-size: 18px;
+			line-height: 2.5;
 			color: $bg-default;
 		}
 		h3+.fa-close {
 			@extend .fa-close;
 			color: #fff;
 		}
-		.popup-list {
-			padding: 20px;
+		.pop-list {
+			padding: 30px 20px;
 			dl {
-				display: block;
 				width: 100%;
-				overflow: hidden;
+				font-size: 12px;
 				margin-bottom: 10px;
 				dt {
-					@include span(3);
-					display: inline-block;
-					min-width: 60px;
-					line-height: 2.5;
+					margin-bottom: 6px;
 				}
 				dd {
-					@include span(9 last);
 					min-height: 30px;
 					input {
 						width: 100%;
@@ -82,10 +81,50 @@
 					}
 				}
 			}
+			.star {
+				font-size: 26px;
+				display: block;
+				width: 100%;
+				text-align: center;
+				.fa {
+					margin-right: 10px;
+					&:last-child {
+						margin-right: 0;
+					}
+				}
+				@include susy-breakpoint($mobile, 6) {
+					font-size: 30px;
+					.fa {
+						margin-right: 16px;
+					}
+				}
+			}
+			.reviews-write {
+				font-size: 12px;
+				color: $font-color-purple;
+				width: 100%;
+				height: 230px;
+				line-height: 2;
+				padding: 10px;
+				margin-top: 8px;
+				margin-bottom: 10px;
+				background: $bg-default;
+			}
 		}
-		.popup-list-btnset {
+		.join-pw {
+			font-size: 12px;
+			color: $font-color-purple;
+			text-decoration: underline;
+		}
+		.pop-btn-set {
 			width: 100%;
 			text-align: center;
+			[class^="btn-"] {
+				display: block;
+				max-width: 100%;
+				margin-top: 10px;
+				line-height: 2.5;
+			}
 		}
 	}
 }

@@ -25,6 +25,7 @@ html[class^='lt-ie'], [class^='lt-ie'] body {
 	height: 100%;
 }
 body {
+	height: 100%;
 	height: 100vh;
 	background: $bg-default;
 	* {
@@ -32,9 +33,15 @@ body {
 		margin: 0;
 	}
 }
+// 드래그 색상 지정
+*::selection {
+	background-color: #dfbde9; color: $font-color-purple;
+}
+*::-moz-selection {
+	background-color: #dfbde9; color: $font-color-purple;
+}
 // border-box 설정
 @include border-box-sizing;
-
 input, button, select, textarea {
 	border: 0;
 	cursor: pointer;
@@ -59,12 +66,62 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 	-webkit-text-fill-color: #999 !important;
 	-webkit-box-shadow: 0 0 0px 1000px #e0e0e0 inset;
 }
-
+// 영역 밖으로 넘어가는 글자 점(...)처리
 %text-wrap {
 	display: inline-block;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+// 영역 내 가운데 정렬
+@mixin wh-center ($position: absolute, $h-percent: 50%, $w-percent: 50%) {
+	position: $position;
+	top: $h-percent;
+	left: $w-percent;
+	transform: translate(-$h-percent, -$w-percent);
+}
+@mixin w-center ($position: absolute, $w-percent: 50%) {
+	position: $position;
+	left: $w-percent;
+	transform: translateX(-$w-percent);
+}
+@mixin h-center ($position: absolute, $h-percent: 50%) {
+	position: $position;
+	top: $h-percent;
+	transform: translateY(-$h-percent);
+}
+// 별점(★☆) 버튼
+span.star {
+	color: $font-color-purple;
+	.fa {
+		margin-right: 4px;
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+// 리스트 더보기 버튼
+.btn-more {
+	width: 235px;
+	font-size: 12px;
+	line-height: 28px;
+	border: 1px solid $border-gray;
+	clear: both;
+	@include w-center ($position: relative);
+	i.fa {
+		margin-left: 10px;
+		vertical-align: text-top;
+	}
+	@include susy-breakpoint($mobile, 6) {
+		@include span(6);
+	}
+	@include susy-breakpoint($tablet, 8) {
+		@include span(8);
+	}
+	@include susy-breakpoint($desktop, 12) {
+		// @include span(6 at 4);
+		width: 490px;
+	}
 }
 
 // =======================================
@@ -99,7 +156,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 // =======================================
 .checkbox {
 	position: relative;
-	line-height: 1.2;
 	label {
 		display: inline-block;
 		font-size: 12px;
@@ -114,26 +170,25 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 		display: none;
 	}
 }
-//  Kalypto.checked.js 자동 생성 태그 Style 적용
+// Kalypto.checked.js 자동 생성 태그 Style 적용
 .k_toggle {
 	display: inline-block;
 	font-family: FontAwesome;
-	width: 18px;
-	height: 18px;
-	border: 1px solid #269700;
-	border-radius: 3px;
+	width: 19px;
+	height: 19px;
+	border: 1px solid $font-color-purple;
 	margin-right: 4px;
+	border-radius: 3px;
 	background: #fff;
 }
 .k_toggle.checked:before {
 	float: left;
-	width: 16px;
-	height: 16px;
-	padding-top: 1px;
 	font-family: FontAwesome;
-	font-size: 13px;
-	text-align: center;
+	font-size: 14px;
 	color: $font-color-purple;
+	padding-left: 2px;
+	padding-right: 2px;
+	line-height: 1.25;
 	content: '\f00c';
 }
 
@@ -143,7 +198,7 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .radiobox {
 	@extend .checkbox;
 }
-//  Kalypto.checked.js 자동 생성 태그 Style 적용
+// Kalypto.checked.js 자동 생성 태그 Style 적용
 .k_toggleR {
 	border-radius: 10px;
 	@extend .k_toggle;
@@ -180,18 +235,12 @@ input, select, textarea {
 // =======================================
 %bg-common {
 	background: {
-			image: url("/Common/images/common/squairy_light_@2X.png");
-			size: 50%;
-		}
-	@include susy-breakpoint($tablet, 8) {
-		background: {
-			image: url("/Common/images/common/squairy_light_@2X.png");
-			size: 25%
-		}
+		image: url("/Common/images/common/squairy_light.png");
 	}
-	@include susy-breakpoint($desktop, 12) {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
 		background: {
-			image: url("/Common/images/common/squairy_light.png");
+			image: url("/Common/images/common/squairy_light_@2X.png");
+			size: 200px 200px;
 		}
 	}
 }
@@ -239,6 +288,249 @@ input, select, textarea {
 }
 
 // =======================================
+// Layout Style
+// =======================================
+#header, #footer, #container {
+	width: 100%;
+}
+#header {
+	position: fixed;
+	height: 40px;
+	background: $bg-nav-depth;
+	z-index: 1;
+	.wrap {
+		h1 {
+			font-family: "Myriad Pro";
+			font-size: 16px;
+			font-weight: normal;
+			color: #fff;
+			line-height: 40px;
+			margin: 0;
+		}
+	}
+}
+#header {
+	.wrap {
+		> h1 {
+			@include span(2);
+			@include susy-breakpoint($tablet, 8) {
+				@include span(2);
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(2);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			height: 100%;
+			margin-top: 5px;
+			text-align: center;
+			[class^="tab-"] {
+				position: relative;
+				display: inline-block;
+				font-size: 12px;
+				color: #ccc;
+				min-width: 110px;
+				text-align: left;
+				padding: 5px 10px;
+				border: 1px solid #999;
+				&:before {
+					position: absolute;
+					font-family: 'FontAwesome';
+					content: "\f002";
+					font-size: 16px;
+					top: 1px;
+					right: 6px;
+				}
+				&:focus, &.selected {
+					color: inherit;
+					background: $bg-default;
+					border: 1px solid $bg-default;
+					padding-bottom: 10px;
+					&:before {
+						color: #b3b3b3;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				@include span(4);
+				display: inline-block;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(4);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			height: 100%;
+			font-size: 12px;
+			text-align: center;
+			> a {
+				float: left;
+				display: block;
+				color: #ccc;
+				min-width: 80px;
+				height: 100%;
+				line-height: 40px;
+				padding-left: 36px;
+				padding-right: 14px;
+				i {
+					font-size: 18px;
+					margin-right: 6px;
+					vertical-align: middle;
+				}
+				&:hover, &:focus, &.selected {
+					color: #fff;
+					background: lighten($bg-nav-depth, 20%);
+					&:before {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			> a {
+				position: relative;
+				&:before {
+					font-size: 14px;
+					color: #ccc;
+					position: absolute;
+					left: 14px;
+				}
+				&:nth-of-type(1):before {
+					font-family: 'FontAwesome';
+					content: "\f274";
+				}
+				&:nth-of-type(2):before {
+					font-family: 'FontAwesome';
+					content: "\f007";
+				}
+				&:nth-of-type(3):before {
+					font-family: 'FontAwesome';
+					content: "\f013";
+				}
+				&:nth-of-type(4):before {
+					font-family: 'FontAwesome';
+					content: "\f023";
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				display: none;
+				float: right;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: inline-block;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			text-align: right;
+			margin-top: 5px;
+			.menu-button {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				color: #ccc;
+				text-align: center;
+				border: 1px solid #999;
+				span {
+					display: none;
+				}
+				&:before {
+					font-family: 'FontAwesome';
+					content: "\f0c9";
+					font-size: 18px;
+					line-height: 29px;
+				}
+			}
+		}
+		.search-button {
+			@extend .menu-button;
+			&:before {
+				content: "\f002" !important;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			@include span(2 float last);
+			display: inline-block;
+			.search-button {
+				display: inline-block;
+			}
+			@include susy-breakpoint($tablet, 8) {
+				display: inline-block;
+				@include span(2 float last);
+				.search-button {
+					display: none;
+				}
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: none;
+				@include span(6 float last);
+			}
+		}
+	}
+}
+#container {
+	position: relative;
+	min-height: 480px;
+	padding-top: 40px;
+	background: #fff;
+	overflow: hidden;
+	clear: both;
+	@include susy-breakpoint($tablet, 8) {
+		min-height: 680px;
+	}
+	@include susy-breakpoint($desktop, 12) {
+		min-height: 750px;
+	}
+}
+#footer {
+	position: relative;
+	height: 40px;
+	border-top: 1px solid #fff;
+	background: $bg-default;
+	overflow: hidden;
+	.copyright {
+		font-family: Verdana;
+		font-style: normal;
+		font-size: 12px;
+		text-align: center;
+		line-height: 40px;
+	}
+}
+
+// =======================================
 // Content Layout Style
 // =======================================
 
@@ -262,10 +554,6 @@ input, select, textarea {
 		content: '\f06a';
 	}
 }
-
-// 패턴 배경
-%patton {}
-
 // 서브 상단 진행상황 스타일
 .progress {
 	width: 100%;
@@ -333,4 +621,24 @@ input, select, textarea {
 			}
 		}
 	}
+}
+// 한줄 라인 오른쪽 배치 (버튼, 체크박스, 라이오버튼 등)
+.line-left-box-area {
+	float: left;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	> li {
+		float: left;
+		margin-left: 6px;
+		&.select-style {
+			.stb-select-container {
+				width: 150px;
+				font-size: 12px;
+			}
+		}
+	}
+}
+.line-right-box-area {
+	@extend .line-left-box-area;
+	float: right;
 }
