@@ -402,6 +402,7 @@
 	@include span(full);
 	background: $bg-default-purple;
 	border-top: 1px solid #a547c0;
+	clear: both;
 	.title-btn {
 		line-height: 56px;
 		> h3 {
@@ -1063,8 +1064,9 @@
 	}
 	div.wrap:nth-of-type(1) {
 		padding-top: $base-line-height;
+		overflow: hidden;
 		.btn-date {
-			@include btn-default;
+			@include btn-default($miw: 0);
 			height: $base-line-height*4;
 			&:before {
 				font-family: 'FontAwesome';
@@ -1089,6 +1091,38 @@
 			@include btn-default($miw: 0, $fz: 18);
 		}
 	}
+	@include susy-breakpoint($mobile, 6) {
+		div.wrap:nth-of-type(1) {
+			.btn-date {
+				@include span(1);
+				@include last;
+			}
+		}
+	}
+	@include susy-breakpoint($tablet, 8) {
+		div.wrap:nth-of-type(1) {
+			.btn-date {
+				@include span(1);
+				@include last;
+			}
+		}
+		div.wrap:nth-of-type(2) {
+			@include layout(17 10px/42px);
+			> h5 {
+				@include span(15);
+			}
+			.selected-add {
+				@include span(2);
+				@include last;
+				position: relative;
+				top: -10px;
+				right: 0;
+			}
+			.btn-search {
+				@include span(3);
+			}
+		}
+	}
 	@include susy-breakpoint($desktop, 12) {
 		div.wrap:nth-of-type(1) {
 			.btn-date {
@@ -1097,15 +1131,12 @@
 			}
 		}
 		div.wrap:nth-of-type(2) {
-			@include layout(12 10px/65px);
+			@include layout(17 10px/42px);
 			> h5 {
-				@include span(9);
+				@include span(8);
 			}
 			.selected-add {
-				@include span(1);
-				position: relative;
-				top: -10px;
-				right: 2px;
+				@include span(2);
 			}
 			.btn-search {
 				@include span(3);
@@ -1114,6 +1145,7 @@
 	}
 }
 .bk-select-date {
+	display: none;
 	position: relative;
 	overflow: hidden;
 	height: $base-line-height*4;
@@ -1143,51 +1175,48 @@
 			right: -2px;
 		}
 	}
+	@include susy-breakpoint($mobile, 6) {
+		display: block;
+	}
 }
 .bk-select-date {
-	ul {
-		padding: 0 50px;
-		z-index: 9;
-		li {
-			font-size: 30px;
-			color: #555;
-			text-align: center;
-			height: $base-line-height*4;
-			padding-top: 10px;
-			background: #e0e0e0;
-			border: 1px solid #d5d5d5;
-			border-left: 0px;
-			&:first-child {
-				border-left: 1px solid #d5d5d5;
-			}
-			p {
-				font-size: 12px;
-			}
-		}
-	}
-	@include susy-breakpoint($tablet, 8) {
-		@include span(6);
+	@include susy-breakpoint($mobile, 6) {
+		@include span(5);
 		ul {
 			@include span(full);
 			position: absolute;
 			top: 0;
+			padding: 0 50px;
+			z-index: 9;
 			li {
 				@include layout(7 0px/65px);
 				@include gallery(1 of 7);
+				font-size: 30px;
+				color: #555;
+				text-align: center;
+				height: $base-line-height*4;
+				padding-top: 10px;
+				background: #e0e0e0;
+				border: 1px solid #d5d5d5;
+				border-left: 0px;
+				&:first-child {
+					border-left: 1px solid #d5d5d5;
+				}
+				p {
+					font-size: 12px;
+				}
 			}
 		}
+	}
+	@include susy-breakpoint($tablet, 8) {
+		@include span(7);
 	}
 	@include susy-breakpoint($desktop, 12) {
 		@include span(10);
-		ul {
-			li {
-				@include layout(7 0px/65px);
-				@include gallery(1 of 7);
-			}
-		}
 	}
 }
 .bk-select-service {
+	@include span(full);
 	.select-style {
 		.stb-select-container {
 			background: #fff;
@@ -1227,11 +1256,25 @@
 		}
 	}
 	@include susy-breakpoint($tablet, 8) {
-		clear: both;
+		@include layout(17 10px/42px);
+		[class^="selected-"] {
+			@include span(1);
+			@include last;
+		}
+	}
+	@include susy-breakpoint($desktop, 12) {
+		@include layout(17 10px/42px);
+		[class^="selected-"] {
+			@include span(1);
+		}
+	}
+}
+.bk-select-service {
+	@include susy-breakpoint($tablet, 8) {
+		@include layout(17 10px/42px);
 		margin-bottom: 10px;
 		.select-style {
-			@include span(3);
-			float: left;
+			@include span(8);
 			margin-right: 10px;
 			.stb-select-container {
 				@include span(full);
@@ -1239,9 +1282,9 @@
 		}
 	}
 	@include susy-breakpoint($desktop, 12) {
+		@include layout(17 10px/42px);
 		.select-style {
 			@include span(5);
-			float: left;
 			margin-right: 10px;
 			.stb-select-container {
 				@include span(full);
@@ -1268,6 +1311,8 @@
 	}
 }
 .booking-list {
+	@extend .reviews-list;
+	margin-bottom: $base-line-height;
 	> h4 {
 		font-size: 12px;
 		font-weight: bold;
@@ -1276,10 +1321,8 @@
 		padding: 0 10px;
 		background: #d5d5d5;
 	}
-	margin-bottom: $base-line-height;
 }
 .booking-list {
-	@extend .reviews-list;
 	> ul {
 		padding-top: 20px;
 		padding-bottom: 10px;
@@ -1304,6 +1347,10 @@
 				vertical-align: middle;
 			}
 		}
+	}
+}
+.booking-list {
+	> ul {
 		> li:nth-of-type(1) {
 			.designer {
 				width: 140px;
@@ -1358,6 +1405,10 @@
 				}
 			}
 		}
+	}
+}
+.booking-list {
+	> ul {
 		@include susy-breakpoint($desktop, 12) {
 			> li:nth-of-type(1) {
 				@include span(2);
