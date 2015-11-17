@@ -99,6 +99,13 @@
 					}
 				}
 			}
+			.select-style {
+				@include span(full);
+				margin-top: $base-line-height;
+				.stb-select-container {
+					width: 100%;
+				}
+			}
 			.reviews-write {
 				font-size: 12px;
 				color: $font-color-purple;
@@ -106,7 +113,7 @@
 				height: 230px;
 				line-height: 2;
 				padding: 10px;
-				margin-top: 8px;
+				margin-top: 5px;
 				margin-bottom: 10px;
 				background: $bg-default;
 			}

@@ -1,4 +1,247 @@
 // =======================================
+// Layout Style
+// =======================================
+#header, #footer, #container {
+	width: 100%;
+}
+#header {
+	position: fixed;
+	height: 40px;
+	background: $bg-nav-depth;
+	z-index: 100;
+	.wrap {
+		h1 {
+			font-family: "Myriad Pro";
+			font-size: 16px;
+			font-weight: normal;
+			color: #fff;
+			line-height: 40px;
+			margin: 0;
+		}
+	}
+}
+#header {
+	.wrap {
+		> h1 {
+			@include span(2);
+			@include susy-breakpoint($tablet, 8) {
+				@include span(2);
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(2);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			height: 100%;
+			margin-top: 5px;
+			text-align: center;
+			[class^="tab-"] {
+				position: relative;
+				display: inline-block;
+				font-size: 12px;
+				color: #ccc;
+				min-width: 110px;
+				text-align: left;
+				padding: 5px 10px;
+				border: 1px solid #999;
+				&:before {
+					position: absolute;
+					font-family: 'FontAwesome';
+					content: "\f002";
+					font-size: 16px;
+					top: 1px;
+					right: 6px;
+				}
+				&:focus, &.selected {
+					color: inherit;
+					background: $bg-default;
+					border: 1px solid $bg-default;
+					padding-bottom: 10px;
+					&:before {
+						color: #b3b3b3;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.search-set {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				@include span(4);
+				display: inline-block;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				@include span(4);
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			height: 100%;
+			font-size: 12px;
+			text-align: center;
+			> a {
+				float: left;
+				display: block;
+				color: #ccc;
+				min-width: 80px;
+				height: 100%;
+				line-height: 40px;
+				padding-left: 34px;
+				padding-right: 12px;
+				i {
+					font-size: 18px;
+					margin-right: 6px;
+					vertical-align: middle;
+				}
+				&:hover, &:focus, &.selected {
+					color: #fff;
+					background: lighten($bg-nav-depth, 20%);
+					&:before {
+						color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			> a {
+				position: relative;
+				&:before {
+					font-size: 14px;
+					color: #ccc;
+					position: absolute;
+					left: 14px;
+				}
+				&:nth-of-type(1):before {
+					font-family: 'FontAwesome';
+					content: "\f274";
+				}
+				&:nth-of-type(2):before {
+					font-family: 'FontAwesome';
+					content: "\f007";
+				}
+				&:nth-of-type(3):before {
+					font-family: 'FontAwesome';
+					content: "\f013";
+				}
+				&:nth-of-type(4):before {
+					font-family: 'FontAwesome';
+					content: "\f023";
+				}
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-menu {
+			display: none;
+			@include susy-breakpoint($tablet, 8) {
+				display: none;
+				float: right;
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: inline-block;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			text-align: right;
+			margin-top: 5px;
+			.menu-button {
+				display: inline-block;
+				width: 30px;
+				height: 30px;
+				color: #ccc;
+				text-align: center;
+				border: 1px solid #999;
+				span {
+					display: none;
+				}
+				&:before {
+					font-family: 'FontAwesome';
+					content: "\f0c9";
+					font-size: 18px;
+					line-height: 29px;
+				}
+			}
+		}
+		.search-button {
+			@extend .menu-button;
+			&:before {
+				content: "\f002" !important;
+			}
+		}
+	}
+}
+#header {
+	.wrap {
+		.top-button {
+			@include span(2 float last);
+			display: inline-block;
+			.search-button {
+				display: inline-block;
+			}
+			@include susy-breakpoint($tablet, 8) {
+				display: inline-block;
+				@include span(2 float last);
+				.search-button {
+					display: none;
+				}
+			}
+			@include susy-breakpoint($desktop, 12) {
+				display: none;
+				@include span(6 float last);
+			}
+		}
+	}
+}
+#container {
+	position: relative;
+	min-height: 480px;
+	padding-top: 40px;
+	background: #fff;
+	overflow: hidden;
+	clear: both;
+	@include susy-breakpoint($tablet, 8) {
+		min-height: 680px;
+	}
+	@include susy-breakpoint($desktop, 12) {
+		min-height: 750px;
+	}
+}
+#footer {
+	position: relative;
+	height: 40px;
+	border-top: 1px solid #fff;
+	background: $bg-default;
+	overflow: hidden;
+	.copyright {
+		font-family: Verdana;
+		font-style: normal;
+		font-size: 12px;
+		text-align: center;
+		line-height: 40px;
+	}
+}
+
+// =======================================
 // index.html (Store 검색)
 // =======================================
 .store-box {
@@ -741,6 +984,7 @@
 								max-width: 100%;
 								max-height: 100%;
 								vertical-align: middle;
+								border: 1px solid $border-gray;
 							}
 						}
 					}
@@ -915,23 +1159,24 @@
 .reviews-bg {
 	@extend .salon-bg;
 	height: 180px;
-	padding-top: 36px;
+	padding-top: 54px;
 	background: #f7f7f7;
 	span {
 		display: inline-block;
 		max-height: 100%;
 		vertical-align: middle;
+		color: inherit;
 		&:first-child {
-			font-size: 72px;
+			font-size: 50px;
 			padding-right: 15px;
 			border-right: 1px solid #d5d5d5;
 		}
 		&:last-child {
 			font-size: 12px;
 			text-align: left;
-			padding-left: 15px;
+			padding-left: 10px;
 			.fa {
-				font-size: 26px;
+				font-size: 24px;
 				color: $font-color-purple;
 				padding-bottom: 8px;
 				margin-right: 4px;
@@ -940,15 +1185,33 @@
 				}
 			}
 		}
-		@include susy-breakpoint($mobile, 6) {
+	}
+}
+.reviews-bg {
+	@include susy-breakpoint(480px) {
+		height: 180px;
+		padding-top: 36px;
+		span {
+			&:first-child {
+				font-size: 72px;
+			}
+		}
+	}
+	@include susy-breakpoint($mobile, 6) {
+		span {
 			&:first-child {
 				padding-right: 40px;
 			}
 			&:last-child {
 				padding-left: 40px;
+				.fa {
+					font-size: 26px;
+				}
 			}
 		}
-		@include susy-breakpoint($tablet, 8) {
+	}
+	@include susy-breakpoint($tablet, 8) {
+		span {
 			&:first-child {
 				padding-right: 50px;
 			}
@@ -1005,6 +1268,13 @@
 				font-size: 18px;
 				margin-left: 10px;
 			}
+			.designer {
+				margin: 10px 0 6px 0;
+				.iconfont-designer {
+					font-size: 20px;
+					margin-right: 4px;
+				}
+			}
 			.review {
 				font-size: 12px;
 				line-height: 2;
@@ -1055,27 +1325,40 @@
 // book-store-booking.html (Booking)
 // =======================================
 .booking-bg {
+	@include span(full);
 	background: #f7f7f7;
 	clear: both;
 	.wrap {
 		> h5 {
 			@include sub-title;
 		}
+		&:after {
+			content:" ";
+			display:block;
+			clear:both;
+		}
 	}
-	div.wrap:nth-of-type(1) {
+	.wrap:nth-of-type(1) {
 		padding-top: $base-line-height;
-		overflow: hidden;
+		position: relative;
 		.btn-date {
-			@include btn-default($miw: 0);
-			height: $base-line-height*4;
+			display: block;
+			position: absolute;
+			top: 50px;
+			right: 30px;
+			color: #999;
 			&:before {
 				font-family: 'FontAwesome';
 				font-size: 20px;
 				content: "\f073";
 			}
 		}
+		.bk-input-date {
+			@include span(full);
+			height: $base-line-height*2;
+		}
 	}
-	div.wrap:nth-of-type(2) {
+	.wrap:nth-of-type(2) {
 		padding-top: $base-line-height * 2;
 		padding-bottom: $base-line-height;
 		.selected-add {
@@ -1089,58 +1372,6 @@
 		}
 		.btn-search {
 			@include btn-default($miw: 0, $fz: 18);
-		}
-	}
-	@include susy-breakpoint($mobile, 6) {
-		div.wrap:nth-of-type(1) {
-			.btn-date {
-				@include span(1);
-				@include last;
-			}
-		}
-	}
-	@include susy-breakpoint($tablet, 8) {
-		div.wrap:nth-of-type(1) {
-			.btn-date {
-				@include span(1);
-				@include last;
-			}
-		}
-		div.wrap:nth-of-type(2) {
-			@include layout(17 10px/42px);
-			> h5 {
-				@include span(15);
-			}
-			.selected-add {
-				@include span(2);
-				@include last;
-				position: relative;
-				top: -10px;
-				right: 0;
-			}
-			.btn-search {
-				@include span(3);
-			}
-		}
-	}
-	@include susy-breakpoint($desktop, 12) {
-		div.wrap:nth-of-type(1) {
-			.btn-date {
-				@include span(2);
-				@include last;
-			}
-		}
-		div.wrap:nth-of-type(2) {
-			@include layout(17 10px/42px);
-			> h5 {
-				@include span(8);
-			}
-			.selected-add {
-				@include span(2);
-			}
-			.btn-search {
-				@include span(3);
-			}
 		}
 	}
 }
@@ -1175,50 +1406,133 @@
 			right: -2px;
 		}
 	}
-	@include susy-breakpoint($mobile, 6) {
-		display: block;
-	}
 }
 .bk-select-date {
-	@include susy-breakpoint($mobile, 6) {
-		@include span(5);
-		ul {
-			@include span(full);
-			position: absolute;
-			top: 0;
-			padding: 0 50px;
-			z-index: 9;
-			li {
-				@include layout(7 0px/65px);
-				@include gallery(1 of 7);
-				font-size: 30px;
-				color: #555;
-				text-align: center;
-				height: $base-line-height*4;
-				padding-top: 10px;
-				background: #e0e0e0;
-				border: 1px solid #d5d5d5;
-				border-left: 0px;
-				&:first-child {
-					border-left: 1px solid #d5d5d5;
+	ul {
+		@include span(full);
+		position: absolute;
+		top: 0;
+		padding: 0 50px;
+		z-index: 9;
+		li {
+			@include layout(7 0px/109px);
+			@include gallery(1 of 7);
+			font-size: 30px;
+			color: #555;
+			text-align: center;
+			height: $base-line-height*4;
+			padding-top: 10px;
+			background: #e0e0e0;
+			border: 1px solid #d5d5d5;
+			border-left: 0px;
+			&:first-child {
+				border-left: 1px solid #d5d5d5;
+			}
+			p {
+				font-size: 12px;
+			}
+			&:hover, &:focus, &.selected {
+				color: inherit;
+				background: #fff;
+				border: 1px solid $border-purple;
+				box-sizing: border-box;
+			}
+			&.today {
+				position: relative;
+				color: $border-purple;
+				overflow: hidden;
+				&:before {
+					display: block;
+					position: absolute;
+					top: 7px;
+					left: -23%;
+					width: 100%;
+					line-height: 16px;
+					font-size: 11px;
+					color: #fff;
+					text-align: center;
+					transform: rotate(-45deg);
+					background: $border-purple;
+					content: 'Today';
 				}
-				p {
-					font-size: 12px;
+				&:hover, &:focus, &.selected {
+					color: inherit;
+					&:before {
+						display: none;
+					}
+				}
+			}
+			@include susy-breakpoint($tablet) {
+				&.today {
+					&:before {
+						top: 10px;
+						left: -30%;
+					}
 				}
 			}
 		}
 	}
-	@include susy-breakpoint($tablet, 8) {
-		@include span(7);
+}
+.booking-bg {
+	@include susy-breakpoint(704px) {
+		.wrap:nth-of-type(1) {
+			@include layout(6 20px/94px);
+			.bk-select-date {
+				@include span(5);
+				display: block;
+			}
+			.btn-date {
+				position: relative;
+				top: 0;
+				right: 0;
+				@include span(1);
+				@include last;
+				@include btn-default($miw: 0);
+				height: $base-line-height*4;
+			}
+			.bk-input-date {
+				display: none;
+			}
+		}
 	}
-	@include susy-breakpoint($desktop, 12) {
-		@include span(10);
+	@include susy-breakpoint($tablet) {
+		.wrap:nth-of-type(1) {
+			@include layout(5 20px/128px);
+			.bk-select-date {
+				@include span(4);
+			}
+			.btn-date {
+				@include span(1);
+				@include last;
+			}
+		}
+	}
+	@include susy-breakpoint($desktop) {
+		.wrap:nth-of-type(1) {
+			@include layout(7 20px/120px);
+			.bk-select-date {
+				@include span(6);
+			}
+			.btn-date {
+				@include span(1);
+				@include last;
+			}
+		}
 	}
 }
 .bk-select-service {
+	@include layout(6 10px/41px);
 	@include span(full);
+	margin-bottom: 10px;
 	.select-style {
+		margin-bottom: 10px;
+		&:after {
+			content:" ";
+			display:block;
+			clear:both;
+		}
 		.stb-select-container {
+			@include span(full);
 			background: #fff;
 			padding-left: 18px;
 			padding-right: 40px;
@@ -1234,9 +1548,25 @@
 				top: 41px;
 			}
 		}
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+}
+.bk-select-service {
+	.select-style:nth-of-type(1) {
+		@include span(6);
+		@include last;
+	}
+	.select-style:nth-of-type(2) {
+		@include span(5);
+	}
+	[class^="selected-"] {
+		@include span(1);
+		@include last;
 	}
 	.selected-del {
-		@include btn-default($miw: 42);
+		@include btn-default($miw: 38);
 		font-family: 'FontAwesome';
 		font-size: 18px;
 		height: $base-line-height*2;
@@ -1246,7 +1576,7 @@
 	}
 	.selected-default {
 		@extend .selected-del;
-		@include btn-default($miw: 42, $bg-color: #c2c2c2);
+		@include btn-default($miw: 38, $bg-color: #c2c2c2);
 		font-size: 20px;
 		color: #777;
 		cursor: default;
@@ -1255,58 +1585,104 @@
 			text-shadow: none;
 		}
 	}
-	@include susy-breakpoint($tablet, 8) {
-		@include layout(17 10px/42px);
-		[class^="selected-"] {
-			@include span(1);
-			@include last;
-		}
-	}
-	@include susy-breakpoint($desktop, 12) {
-		@include layout(17 10px/42px);
-		[class^="selected-"] {
-			@include span(1);
-		}
-	}
 }
-.bk-select-service {
-	@include susy-breakpoint($tablet, 8) {
-		@include layout(17 10px/42px);
-		margin-bottom: 10px;
-		.select-style {
-			@include span(8);
-			margin-right: 10px;
-			.stb-select-container {
-				@include span(full);
+.booking-bg {
+	.wrap:nth-of-type(2) {
+		> h5 {
+			@include span(4);
+		}
+		.selected-add {
+			@include span(2);
+			@include last;
+			position: relative;
+			top:-10px;
+		}
+	}
+	@include susy-breakpoint($mobile, 6) {
+		.wrap:nth-of-type(2) {
+			> h5 {
+				@include span(5);
+			}
+			.selected-add {
+				@include span(1);
+				@include last;
 			}
 		}
 	}
-	@include susy-breakpoint($desktop, 12) {
-		@include layout(17 10px/42px);
-		.select-style {
-			@include span(5);
-			margin-right: 10px;
-			.stb-select-container {
-				@include span(full);
+	@include susy-breakpoint($tablet) {
+		.wrap:nth-of-type(2) {
+			@include layout(15 10px/40px);
+			> h5 {
+				@include span(12);
+			}
+			.selected-add {
+				@include span(2);
+			}
+			.bk-select-service {
+				margin-bottom: 0;
+				.select-style:nth-of-type(1) {
+					@include span(7);
+				}
+				.select-style:nth-of-type(2) {
+					@include span(7);
+				}
+				[class^="selected-"] {
+					@include span(1);
+					@include last;
+				}
+			}
+		}
+	}
+	@include susy-breakpoint($desktop) {
+		.wrap:nth-of-type(2) {
+			@include layout(18 10px/45px);
+			> h5 {
+				@include span(10);
+			}
+			.selected-add {
+				@include span(2);
+			}
+			.bk-select-service {
+				.select-style:nth-of-type(1) {
+					@include span(6);
+				}
+				.select-style:nth-of-type(2) {
+					@include span(6);
+				}
+				[class^="selected-"] {
+					width: auto;
+					min-width: 42px;
+					float: left;
+				}
+			}
+		}
+	}
+}
+.booking-bg {
+	.wrap:nth-of-type(2) {
+		.btn-search {
+			@include layout(4 20px/65px);
+			@include span(full);
+			@include susy-breakpoint($tablet) {
+				@include layout(8 20px/65px);
+				@include span(3);
+			}
+			@include susy-breakpoint($desktop) {
+				@include layout(12 20px/65px);
+				@include span(3);
+				margin-top: $base-line-height;
 			}
 		}
 	}
 }
 .booking-result {
-	margin-top: $base-line-height*2;
-	margin-bottom: $base-line-height*2;
+	padding-top: $base-line-height*2;
+	padding-bottom: $base-line-height*2;
+	clear: both;
 	.wrap {
 		> h5 {
+			@include span(full);
 			@include sub-title;
-		}
-	}
-	.btn-next {
-		@include btn-default($miw: 0, $fz: 18);
-	}
-	@include susy-breakpoint($desktop, 12) {
-		.btn-next {
-			@include span(3);
-			@include last;
 		}
 	}
 }
@@ -1330,8 +1706,8 @@
 			min-height: 140px;
 			display: table;
 			> p {
-				margin-bottom: 10px;
 				font-size: 12px;
+				margin-bottom: 6px;
 				.fa {
 					font-size: 14px;
 					letter-spacing: -1.5px;
@@ -1341,30 +1717,35 @@
 				font-size: 14px;
 				font-weight: bold;
 				color: #999;
-			}
-			.designer {
-				display: table-cell;
-				vertical-align: middle;
+				margin-bottom: 10px;
 			}
 		}
 	}
 }
 .booking-list {
 	> ul {
+		> li {
+			@include layout(2 20px/160px);
+		}
 		> li:nth-of-type(1) {
+			@include span(1);
 			.designer {
-				width: 140px;
-				height: 140px;
 				img {
 					max-width: 100%;
 					max-height: 100%;
+					border: 1px solid $border-gray;
 				}
 			}
 		}
 		> li:nth-of-type(2) {
-			padding-left: 20px;
+			@include span(1);
+			@include last;
+			box-sizing: border-box;
+			max-width: 100%;
 		}
 		> li:nth-of-type(3) {
+			@include span(full);
+			margin-top: $base-line-height;
 			.designer {
 				padding-bottom: 0;
 				span:first-child {
@@ -1387,6 +1768,8 @@
 					margin-bottom: 0;
 				}
 				button {
+					@include layout(3 10px/80px);
+					@include gallery(1 of 3);
 					font-size: 12px;
 					color: #fff;
 					background: #555;
@@ -1396,11 +1779,9 @@
 					&:last-child {
 						margin-bottom: 0;
 					}
-					&:hover, &:focus, &.selected {
-						color: inherit;
-						background: #fff;
-						border: 1px solid $border-purple;
-						box-sizing: border-box;
+					&:hover, &.selected {
+						@extend .btn-selected;
+						line-height: 38px;
 					}
 				}
 			}
@@ -1409,23 +1790,341 @@
 }
 .booking-list {
 	> ul {
-		@include susy-breakpoint($desktop, 12) {
+		@include susy-breakpoint(480px) {
+			> li {
+				@include layout(3 18px/136px);
+			}
 			> li:nth-of-type(1) {
-				@include span(2);
+				@include span(1);
 			}
 			> li:nth-of-type(2) {
 				@include span(2);
+				@include last;
 			}
 			> li:nth-of-type(3) {
-				@include span(8);
+				@include span(full);
+			}
+		}
+		@include susy-breakpoint($mobile) {
+			> li {
+				@include layout(4 16px/120px);
+			}
+			> li:nth-of-type(1) {
+				@include span(1);
+			}
+			> li:nth-of-type(2) {
+				@include span(3);
 				@include last;
+			}
+			> li:nth-of-type(3) {
+				@include span(full);
+				margin-top: 10px;
 				.time {
 					button {
-						@include layout(6 10px/104px);
+						@include layout(6 10px/98px);
 						@include gallery(1 of 6);
 					}
 				}
 			}
 		}
+		@include susy-breakpoint($tablet) {
+			> li {
+				@include layout(5 20px/128px);
+			}
+			> li:nth-of-type(1) {
+				@include span(1);
+			}
+			> li:nth-of-type(2) {
+				@include span(4);
+				@include last;
+			}
+			> li:nth-of-type(3) {
+				@include span(full);
+			}
+		}
+		@include susy-breakpoint($desktop) {
+			> li {
+				@include layout(6 22px/141px);
+			}
+			> li:nth-of-type(1) {
+				@include span(1);
+			}
+			> li:nth-of-type(2) {
+				@include span(1);
+			}
+			> li:nth-of-type(3) {
+				@include span(4);
+				@include last;
+				margin-top: 0;
+			}
+		}
 	}
+}
+.booking-result {
+	.btn-next {
+		@include btn-default($miw: 0, $fz: 18);
+		@include layout(4 20px/65px);
+		@include span(full);
+		@include susy-breakpoint($tablet) {
+			@include layout(8 20px/65px);
+			@include span(3);
+			@include last;
+		}
+		@include susy-breakpoint($desktop) {
+			@include layout(12 20px/65px);
+			@include span(3);
+			@include last;
+		}
+	}
+}
+
+// =======================================
+// my-appointment-upcoming.html (Upcoming)
+// =======================================
+.my-appointment-bg {
+	@extend .title-btn-bg;
+	.title-btn {
+		line-height: $base-line-height * 2;
+		> a {
+			@include layout(2 0%/50%);
+			font-size: 16px;
+			color: #fff;
+			text-align: center;
+			&:focus, &.selected {
+				color: $font-color-yellow;
+			}
+			&:first-child {
+				@include span(1);
+				border-right: 1px solid #b568cb;
+			}
+			&:last-child {
+				@include span(1);
+				@include last;
+			}
+		}
+	}
+}
+.upcoming-list {
+	@extend .booking-list;
+	padding: 0;
+	margin-bottom: 0;
+	> ul {
+		padding-top: 20px;
+		padding-bottom: 0;
+		> li:nth-of-type(1) {
+			@include span(full);
+			text-align: center;
+		}
+		> li:nth-of-type(2) {
+			@include span(full);
+			padding: 0 20px;
+			margin-top: $base-line-height;
+			.title {
+				font-size: 24px;
+				font-weight: normal;
+				color: $font-color-purple;
+				margin-bottom: $base-line-height;
+			}
+			[class^="selected-"] {
+				font-size: 14px;
+				padding-left: 40px;
+				margin-bottom: 10px;
+				position: relative;
+				&:before {
+					position: absolute;
+					left: 0;
+				}
+			}
+			.selected-day:before {
+				@include fa($icon: "\f073", $fz: 20);
+				top: -4px;
+			}
+			.selected-choice:before {
+				@include fa($icon: "\f0c4", $fz: 20);
+				top: -4px;
+			}
+			.selected-time:before {
+				@include fa($icon: "\f017", $fz: 24);
+				top: -7px;
+			}
+		}
+		> li:nth-of-type(3) {
+			@include span(full);
+			.selected-price {
+				width: 100%;
+				padding: 20px;
+				background: #f7f7f7;
+				overflow: hidden;
+				.price {
+					font-size: 48px;
+					text-align: center;
+					padding-bottom: 20px;
+				}
+				[class^="btn-"] {
+					@include layout(2 10px/145px);
+					font-size: 18px;
+					line-height:$base-line-height * 2;
+				}
+				.btn-reschedule {
+					@extend .btn-default;
+					@include span(1);
+				}
+				.btn-cancel {
+					@extend .btn-signup;
+					@include span(1);
+					@include last;
+				}
+				.btn-salon-detail {
+					@extend .btn-cancle;
+					@include span(full);
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+}
+.upcoming-list {
+	@include susy-breakpoint($mobile) {
+		> ul {
+			@include layout(3 19px/188px);
+			> li:nth-of-type(1) {
+				@include span(1);
+				padding-left: 20px;
+			}
+			> li:nth-of-type(2) {
+				@include span(2);
+				@include last;
+				padding: 0 20px 0 0;
+				margin-top: 0;
+			}
+			> li:nth-of-type(3) {
+				@include span(full);
+				margin-top: 15px;
+				.selected-price {
+					.price {
+						font-size: 48px;
+						text-align: center;
+						padding-bottom: 20px;
+					}
+					[class^="btn-"] {
+						@include layout(7 10px/80px);
+					}
+					.btn-reschedule {
+						@include span(2);
+					}
+					.btn-cancel {
+						@include span(2);
+					}
+					.btn-salon-detail {
+						@include span(3);
+						@include last;
+						margin-top: 0;
+					}
+				}
+			}
+		}
+	}
+	@include susy-breakpoint($desktop) {
+		padding-top: $base-line-height * 2;
+		margin-bottom: $base-line-height;
+		> ul {
+			padding-bottom: 20px;
+			@include layout(12 20px/65px);
+			> li:nth-of-type(1) {
+				@include span(3);
+				padding-left: 0;
+				.designer {
+					height: 230px;
+				}
+			}
+			> li:nth-of-type(2) {
+				@include span(5);
+			}
+			> li:nth-of-type(3) {
+				@include span(4);
+				@include last;
+				margin-top: 0;
+				overflow: hidden;
+				.selected-price {
+					@include layout(2 10px/125px);
+					.btn-reschedule {
+						@include span(1);
+					}
+					.btn-cancel {
+						@include span(1);
+						@include last;
+					}
+					.btn-salon-detail {
+						@include span(full);
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+// =======================================
+// my-appointment-history.html (History)
+// =======================================
+.day-setting {
+	margin-bottom: 10px;
+	@include layout(3 10px/147px);
+	overflow: hidden;
+	> button {
+		&:nth-of-type(1) {
+			@include span(1);
+		}
+		&:nth-of-type(2) {
+			@include span(1);
+		}
+		&:nth-of-type(3) {
+			@include span(1);
+			@include last;
+		}
+		@extend .btn-cancle;
+		font-size: 12px;
+		line-height: $base-line-height * 2;
+		&:focus, &.selected {
+			@extend .btn-selected;
+			font-size: 12px;
+			line-height: $base-line-height * 2;
+		}
+	}
+	.help {
+		@include span(full);
+		margin: 10px 0;
+		font-size: 12px;
+		i.fa {
+			font-size: 18px;
+			vertical-align: middle;
+			margin-right: 6px;
+		}
+	}
+	@include susy-breakpoint(670px) {
+		> button {
+			margin-bottom: 10px;
+			&:nth-of-type(1) {
+				width: auto;
+				margin-right: 10px;
+			}
+			&:nth-of-type(2) {
+				width: auto;
+				margin-right: 10px;
+			}
+			&:nth-of-type(3) {
+				float: left;
+				width: auto;
+				margin-right: 10px;
+			}
+		}
+		.help {
+			width: auto;
+		}
+	}
+}
+.history-list {
+	padding-top: $base-line-height * 2;
+	padding-bottom: $base-line-height * 2;
+	overflow: hidden;
 }

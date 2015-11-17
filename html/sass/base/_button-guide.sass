@@ -30,10 +30,19 @@
 	+btn-default($bg-color: #e66815)
 // 취소 버튼
 .btn-cancle
-	+btn-default($bg-color: #697783)
+	+btn-default($bg-color: #555)
 // 엑셀 다운 버튼
 .btn-excel
 	+btn-default($bg-color: #1e7145)
 // 더보기 버튼
 .btn-more
 	+btn-default($bg-color: #fff, $color: #333, $percent: 1%, $ml: 0)
+// 선택 버튼
+.btn-selected
+	+btn-default($bg-color: #fff, $color: inherit)
+	border: 1px solid $border-purple
+	box-sizing: border-box
+	&:hover,
+	&:focus
+		background: #fff
+		text-shadow: none
