@@ -35,9 +35,9 @@
 	// Checkbox or Radio Style 설정
 	var kalypto = function() {
 		// Checkbox Script
-		$("input[type=checkbox]").kalypto();
+		$("input[type=checkbox].kalypto").kalypto();
 		// Radio Script
-		$("input[type=radio]").kalypto({
+		$("input[type=radio].kalypto").kalypto({
 			hideInputs: false,
 			toggleClass: "k_toggleR"
 		});
@@ -96,14 +96,14 @@
 
 		// 토글 메뉴 버튼
 		var toggleBtn = [
-				$('.store-search-set li .toggle'),
-				$('.designer-search-set li .toggle'),
+				$('.store-search-set li .toggle'), //Store 검색 토글 버튼
+				$('.designer-search-set li .toggle'), // Designer 검색 토글 버튼
 				$('.hair-style-set li .btn-down'),
 			],
 		// 토글 패널
 			togglePanel = [
-				$('.store-search-set li ul'),
-				$('.designer-search-set li ul'),
+				$('.store-search-set li ul'), //Store 검색 토글 패널
+				$('.designer-search-set li ul'), // Designer 검색 토글 패벌
 				$('.hair-style-set li .panel'),
 			];
 
@@ -112,11 +112,6 @@
 			toggleBtn[i].click(function(e) {
 				e.preventDefault();
 				if(!$(this).parent().hasClass('active')) {
-					for (var e = 0; e <= toggleBtn.length-1; e++) {
-						toggleBtn[e].removeClass('active');
-						togglePanel[e].filter(':visible').slideToggle();
-					}
-					$(this).addClass('active').next().stop().slideToggle();
 				} else {
 					$(this).removeClass('active');
 					$(this).next().stop().slideToggle();
@@ -126,5 +121,24 @@
 		};
 
 	})();
+
+	// 모바일 메뉴
+	$('.menu-button').click(function() {
+		var dim = $('.mobile-menu-dim'),
+			menu = $('.mobile-menu'),
+			sec = 300;
+		if(menu.css("margin-right") == "0px")
+		{
+			menu.animate({"margin-right": "-=300"}, sec);
+			dim.removeClass("open");
+			dim.addClass("close");
+		}
+		else
+		{
+			menu.animate({"margin-right": "+=300"}, sec);
+			dim.removeClass("close");
+			dim.addClass("open");
+		}
+	});
 
 })(window, document, window.jQuery);

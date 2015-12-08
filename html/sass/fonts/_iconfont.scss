@@ -17,11 +17,11 @@
 @font-face
 {
     font-family: 'iconfont';
-    src: url('/Common//fonts/iconfont.eot?h=564d15c7edf2de071ae5d825592d5ce5');
-    src: url('/Common//fonts/iconfont.eot?h=564d15c7edf2de071ae5d825592d5ce5#iefix') format('eot'),
-    url('/Common//fonts/iconfont.woff?h=564d15c7edf2de071ae5d825592d5ce5') format('woff'),
-    url('/Common//fonts/iconfont.ttf?h=564d15c7edf2de071ae5d825592d5ce5') format('truetype'),
-    url('/Common//fonts/iconfont.svg?h=564d15c7edf2de071ae5d825592d5ce5#iconfont') format('svg');
+    src: url('/Common/fonts/iconfont.eot?h=564d15c7edf2de071ae5d825592d5ce5');
+    src: url('/Common/fonts/iconfont.eot?h=564d15c7edf2de071ae5d825592d5ce5#iefix') format('eot'),
+    url('/Common/fonts/iconfont.woff?h=564d15c7edf2de071ae5d825592d5ce5') format('woff'),
+    url('/Common/fonts/iconfont.ttf?h=564d15c7edf2de071ae5d825592d5ce5') format('truetype'),
+    url('/Common/fonts/iconfont.svg?h=564d15c7edf2de071ae5d825592d5ce5#iconfont') format('svg');
 }
 
 .iconfont
@@ -48,7 +48,7 @@
 .iconfont-designer
 {
     // IE8 : Polyfill using behavior
-    behavior: url(/Common//fonts/iconfont.htc);
+    behavior: url(/Common/fonts/iconfont.htc);
     icon: 'E001';
 }
 .iconfont-designer:before

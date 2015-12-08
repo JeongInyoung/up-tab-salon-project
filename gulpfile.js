@@ -58,7 +58,7 @@ var js_order = [
 	dir.js + '/jquery.lazyload.min.js',	// Image 사이즈 변화
 	dir.js + '/svg-injector.min.js',		// IMG => SVG로 변환, ie9 이하 버전 PNG로 대체
 	dir.js + '/stb.dropdown.min.js',	// Select Box Style 설정
-	// dir.js + '/jiy.toggleshow.js',			// 토글 메뉴 설정
+	dir.js + '/jiy.toggleshow.js',			// 토글 메뉴 설정
 ];
 
 // 자바스크립트 파일 이동 (원본유지)
@@ -85,7 +85,7 @@ gulp.task('build', function() {
 	gulp.start('imagemin');
 	setTimeout(function() {
 		gulp.start('css:min');
-	}, 10000);
+	}, 23000);
 });
 
 // =======================================
@@ -234,7 +234,7 @@ gulp.task('iconfont:make', function(cb){
 		// Preview 생성 폴더 경로 설정
 		previewFolder: SRC + '/iconfont/preview',
 		// font 경로 설정
-		fontUrl: '/fonts',
+		fontUrl: '/Common/fonts',
 		// 아이콘 베이스라인 위치 설정
 		descent: 30
 	}, cb);

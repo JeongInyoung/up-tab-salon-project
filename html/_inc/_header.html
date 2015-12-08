@@ -1,3 +1,6 @@
+<!-- Tablet & Mobile Menu BG Dim -->
+<div class="menu-button mobile-menu-dim"></div>
+<!-- / Tablet & Mobile Menu BG Dim End -->
 <header id="header">
 	<div class="wrap">
 		<!-- logo -->
@@ -9,18 +12,34 @@
 			<a href="designer-search.html" class="tab-designer"><span>Designer</span></a>
 		</div>
 		<!-- / Search End -->
-		<!-- Menu -->
-		<nav class="top-menu">
+		<!-- PC Menu -->
+		<nav role="navigation" class="top-menu">
 			<a href="book-list.html">Book a Service</a><!-- 선택된 탑 메뉴에 class="selected" 추가 설정 -->
 			<a href="my-appointment-upcoming.html">My Appointment</a>
 			<a href="setting.html">Setting</a>
 			<a href="/" class="trigger-pop-login" data-target=".popup-layer.pop-login">Log in</a>
 		</nav>
-		<!-- / Menu End -->
+		<!-- / PC Menu End -->
+		<!-- Tablet & Mobile Menu -->
+		<aside role="navigation" class="mobile-menu">
+			<button class="menu-button close"><i class="fa fa-close"></i>Close</button>
+			<ul>
+				<li><a href="book-list.html"><i class="fa fa-calendar-check-o"></i>Book a Service</a></li>
+				<li><a href="my-appointment-upcoming.html"><i class="fa fa-user"></i>My Appointment</a>
+					<ul>
+						<li><a class="active" href="my-appointment-upcoming.html">Upcoming</a></li><!-- 선택된 메뉴에 class="active" 추가 설정 -->
+						<li><a href="my-appointment-history.html">History</a></li>
+					</ul>
+				</li>
+				<li><a href="setting.html"><i class="fa fa-cog"></i>Setting</a></li>
+				<li><a href="/" class="trigger-pop-login" data-target=".popup-layer.pop-login"><i class="fa fa-lock"></i>Log in</a></li>
+			</ul>
+		</aside>
+		<!-- / Tablet & Mobile Menu End -->
 		<!-- Top Button -->
 		<div class="top-button">
-			<a href="/" class="search-button"><span>검색</span></a>
-			<a href="/" class="menu-button"><span>상단 메뉴</span></a>
+			<a href="index.html" class="search-button"><span>검색</span></a>
+			<button class="menu-button"><span>상단 메뉴</span></button>
 		</div>
 		<!-- / Top Button End -->
 	</div>

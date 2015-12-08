@@ -11,57 +11,110 @@
 
 <!-- Contents Area-->
 <main id="container">
-	<!-- Salon Reviews -->
-	<div class="salon-tab-panel">
-		<div class="wrap">
-			<ul class="line-right-box-area">
-				<li><a href="" class="btn-default trigger-pop-reviews" data-target=".popup-layer.pop-reviews" role="button">Submit</a></li>
+	<!-- Setting -->
+	<div class="setting wrap">
+		<div class="info">
+			<h5>Profile</h5>
+			<ul>
+				<li>
+					<label class="star" for="first-name">First Name</label>
+					<input type="text" name="first-name">
+				</li>
+				<li>
+					<label class="star" for="last-name">Last Name</label>
+					<input type="text" name="last-name">
+				</li>
+				<li>
+					<label for="address">Address</label>
+					<input type="text" name="address">
+				</li>
+				<li>
+					<label class="star" for="city">City</label>
+					<input type="text" name="city">
+				</li>
 				<li class="select-style">
-					<select>
-						<option value="">Recent</option>
-						<option value="">Least Recent</option>
-						<option value="">Best Rank</option>
-						<option value="">Worst Rank</option>
+					<label class="star" for="state">State</label>
+					<select name="state">
+						<option value="">-</option>
+						<option value="">State 1</option>
+						<option value="">State 2</option>
+						<option value="">State 3</option>
+						<option value="">State 4</option>
 					</select>
 				</li>
+				<li>
+					<label for="zip-code">ZIP Code</label>
+					<input type="search" name="zip-code">
+				</li>
+				<li>
+					<label for="home-phone">Home Phone</label>
+					<input type="tel" name="home-phone">
+				</li>
+				<li>
+					<label class="star" for="mobile-phone">Mobile Phone</label>
+					<input type="tel" name="mobile-phone">
+				</li>
+				<li>
+					<label for="mobile-provider">Mobile Provider</label>
+					<input type="tel" name="mobile-provider">
+				</li>
+				<li>
+					<label for="e-mail">E-mail</label>
+					<input type="email" name="e-mail">
+				</li>
+				<li>
+					<label for="birthday">Birthday</label>
+					<input type="date" name="birthday" required>
+				</li>
+				<li>
+					<label class="star" for="username">User Name</label>
+					<input type="text" name="username">
+				</li>
 			</ul>
-			<div class="reviews-list">
-				<ul>
-					<li><span class="name">Lora Jang</span></li>
-					<li>
-						<span class="today-date">7/17/2015</span>
-						<span class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span><br>
-						<p class="designer"><i class="iconfont iconfont-designer"></i>Karen Dals</p>
-						<p class="review">love ellie. she's been doing my waxes for over 5 yrs. and she does a great job and doesn't waste any time.<br>
-						she works with me and is very easy going. she knows what she's doing. and the prices are great.<br>
-						no complaints as long as ellie is there</p>
+		</div>
+		<div class="info-box">
+			<h6>E-mail and Text</h6>
+			<div>
+				<span class="checkbox-title">Subscribe th Reminders &amp; Notifications</span>
+				<ul class="checkbox-wrap">
+					<li class="checkbox">
+						<input type="checkbox" id="Mail" class="kalypto">
+						<label class="mail-label" for="Mail">Mail</label>
+					</li>
+					<li class="checkbox">
+						<input type="checkbox" id="Text" class="kalypto">
+						<label class="text-label" for="Text">Text</label>
 					</li>
 				</ul>
-				<ul>
-					<li><span class="name">Amelia</span></li>
-					<li>
-						<span class="today-date">7/17/2015</span>
-						<span class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span><br>
-						<p class="review">love ellie. she's been doing my waxes for over 5 yrs. and she does a great job and doesn't waste any time.<br>
-						she works with me and is very easy going. she knows what she's doing. and the prices are great.<br>
-						no complaints as long as ellie is there</p>
+			</div>
+			<div>
+				<span class="checkbox-title">Subscribe th our Newsletter &amp; Promotions</span>
+				<ul class="checkbox-wrap">
+					<li class="checkbox">
+						<input type="checkbox" id="Mail" class="kalypto">
+						<label class="mail-label" for="Mail">Mail</label>
+					</li>
+					<li class="checkbox">
+						<input type="checkbox" id="Text" class="kalypto">
+						<label class="text-label" for="Text">Text</label>
 					</li>
 				</ul>
-				<ul>
-					<li><span class="name">Lora Jang</span></li>
-					<li>
-						<span class="today-date">7/17/2015</span>
-						<span class="star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span><br>
-						<p class="review">love ellie. she's been doing my waxes for over 5 yrs. and she does a great job and doesn't waste any time.<br>
-						she works with me and is very easy going. she knows what she's doing. and the prices are great.<br>
-						no complaints as long as ellie is there</p>
-					</li>
-				</ul>
-				<a href="" class="btn-more">more<i class="fa fa-angle-down"></i></a>
 			</div>
 		</div>
+		<div class="info-box">
+			<h6>Change Password</h6>
+			<ul class="password">
+				<li><label for="">Password</label><input type="password"></li>
+				<li><label for="">Change Password</label><input type="password"></li>
+				<li><label for="">Confirm Password</label><input type="password"></li>
+			</ul>
+		</div>
+		<div class="btn-box wrap">
+			<button class="btn-save">Save</button>
+			<button class="btn-clear">Clear</button>
+		</div>
 	</div>
-	<!-- / Salon Reviews End -->
+	<!-- / Setting End -->
 </main>
 <!-- / Contents Area End-->
 

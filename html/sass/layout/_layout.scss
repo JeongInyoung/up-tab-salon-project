@@ -150,11 +150,58 @@
 		.top-menu {
 			display: none;
 			@include susy-breakpoint($tablet, 8) {
-				display: none;
 				float: right;
 			}
 			@include susy-breakpoint($desktop, 12) {
 				display: inline-block;
+			}
+		}
+		.mobile-menu {
+			padding: 20px;
+			padding-right: 0;
+			.menu-button {
+				font-size: 12px;
+				color: #fff;
+				margin-bottom: $base-line-height;
+				i.fa {
+					font-size: 18px;
+					padding-right: 6px;
+					vertical-align: top;
+				}
+			}
+			> ul {
+				li {
+					border-bottom: 1px solid #a547c0;
+					a {
+						display: inline-block;
+						line-height: 48px;
+						font-size: 16px;
+						color: #fff;
+						padding: 0 6px;
+						i.fa {
+							font-size: 20px;
+							width: 40px;
+						}
+						&:hover, &:focus, &.active {
+							color: $font-color-yellow;
+						}
+					}
+					> ul {
+						background: #a547c0;
+						padding: 10px 0;
+						li {
+							a {
+								display: inline-block;
+								line-height: 28px;
+								font-size: 14px;
+								padding-left: 46px;
+								&:hover, &:focus, &.active {
+									color: $font-color-yellow;
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}
@@ -1534,7 +1581,7 @@
 		.stb-select-container {
 			@include span(full);
 			background: #fff;
-			padding-left: 18px;
+			padding-left: 10px;
 			padding-right: 40px;
 			height: $base-line-height*2;
 			span {
@@ -1680,6 +1727,7 @@
 	padding-bottom: $base-line-height*2;
 	clear: both;
 	.wrap {
+		overflow: hidden;
 		> h5 {
 			@include span(full);
 			@include sub-title;
@@ -1726,10 +1774,13 @@
 	> ul {
 		> li {
 			@include layout(2 20px/160px);
+			display: inline-block;
 		}
 		> li:nth-of-type(1) {
 			@include span(1);
 			.designer {
+				width: 100%;
+				height: 100%;
 				img {
 					max-width: 100%;
 					max-height: 100%;
@@ -1920,31 +1971,21 @@
 			padding: 0 20px;
 			margin-top: $base-line-height;
 			.title {
-				font-size: 24px;
-				font-weight: normal;
+				@include sub-title ($fz: 24px, $fw: normal, $mb: $base-line-height);
 				color: $font-color-purple;
-				margin-bottom: $base-line-height;
 			}
 			[class^="selected-"] {
 				font-size: 14px;
-				padding-left: 40px;
 				margin-bottom: 10px;
-				position: relative;
-				&:before {
-					position: absolute;
-					left: 0;
-				}
 			}
 			.selected-day:before {
-				@include fa($icon: "\f073", $fz: 20);
-				top: -4px;
+				top: -5px;
 			}
 			.selected-choice:before {
-				@include fa($icon: "\f0c4", $fz: 20);
 				top: -4px;
+				left: 0;
 			}
 			.selected-time:before {
-				@include fa($icon: "\f017", $fz: 24);
 				top: -7px;
 			}
 		}
@@ -2127,4 +2168,499 @@
 	padding-top: $base-line-height * 2;
 	padding-bottom: $base-line-height * 2;
 	overflow: hidden;
+}
+
+// =======================================
+// my-appointment-history.html (History)
+// =======================================
+.booking-comfirm {
+	@extend .history-list;
+	padding: 0;
+	@include susy-breakpoint($desktop) {
+		padding: $base-line-height * 2 20px;
+	}
+}
+.booking-comfirm {
+	.info {
+		padding: 20px;
+		> h5 {
+			@include sub-title ($fz: 24px, $fw: normal, $mb: 18px);
+			color: $font-color-purple;
+		}
+		> ul {
+			li {
+				border-top: 1px solid $bg-default;
+				> p {
+					margin-top: $base-line-height;
+					margin-bottom: $base-line-height;
+				}
+				[class^="selected-"] {
+					font-size: 18px;
+				}
+				.service {
+					margin-top: $base-line-height;
+					margin-bottom: $base-line-height;
+					[class^="selected-"] {
+						&:before {
+							top: 0;
+						}
+					}
+					> p {
+						margin-top: 10px;
+						margin-bottom: 10px;
+					}
+					h4 {
+						@include sub-title ($fz: 12px, $fw: bold, $mb: 10px);
+						color: $font-color-purple;
+					}
+				}
+				&:last-child {
+					border-bottom: 1px solid $bg-default;
+				}
+			}
+		}
+	}
+}
+.booking-comfirm {
+	.pay {
+		width: 100%;
+		padding: $base-line-height;
+		padding-bottom: $base-line-height * 2;
+		background: $table-th-bg-color;
+		> p {
+			overflow: hidden;
+			clear: both;
+			&:nth-of-type(1) {
+				margin-top: $base-line-height;
+			}
+			&:nth-of-type(2) {
+				margin-bottom: $base-line-height;
+			}
+			&:nth-of-type(3) {
+				font-size: 48px;
+				text-align: right;
+				margin-top: $base-line-height;
+			}
+		}
+		.service {
+			span:first-child {
+				float: left;
+			}
+			span:last-child {
+				float: right;
+			}
+		}
+		.btn-book {
+			width: 100%;
+			margin-top: $base-line-height;
+			@include btn-default($fz: 24);
+		}
+	}
+}
+.booking-comfirm {
+	@include susy-breakpoint($desktop) {
+		@include layout(12 20px/65px);
+		.info {
+			@include span(8);
+			padding: 0;
+		}
+		.pay {
+			margin-top: 0;
+			padding: $base-line-height;
+			@include span(4);
+			@include last;
+		}
+	}
+}
+// =======================================
+// sign-up.html (History)
+// =======================================
+.sign-up {
+	margin-top: $base-line-height * 2;
+	margin-bottom: $base-line-height * 2;
+	margin-right: 0;
+	overflow: hidden;
+	> h5 {
+		@include sub-title ($fz: 24px, $fw: normal, $mb: $base-line-height);
+		color: $font-color-purple;
+	}
+	> dl {
+		padding-top: 10px;
+		padding-bottom: $base-line-height;
+		border-top: 1px solid $bg-default;
+		border-bottom: 1px solid $bg-default;
+		margin-bottom: 10px;
+		overflow: hidden;
+		clear: both;
+		dt, dd {
+			@include span(full);
+		}
+		dt {
+			font-size: 12px;
+			margin-bottom: 4px;
+			&.none {
+				display: none;
+			}
+		}
+		dd {
+			line-height: $base-line-height * 2;
+			margin-bottom: 10px;
+			> input {
+				@include span(full);
+				height: $base-line-height * 2;
+				line-height: $base-line-height * 2;
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	> p {
+		font-size: 12px;
+		margin-bottom: $base-line-height;
+		> a {
+			color: $font-color-purple;
+			text-decoration: underline;
+		}
+	}
+	.btn-set {
+		@include layout(2 10px/240px);
+		a[class$="-button"] {
+			font-size: 18px;
+			line-height: $base-line-height * 2;
+		}
+		.submit-button {
+			@include span(1);
+			@extend .btn-default;
+		}
+		.clear-button {
+			@include span(1);
+			@include last;
+			@extend .btn-cancle;
+		}
+	}
+}
+.sign-up {
+	@include susy-breakpoint(640px) {
+		@include layout(8 16px/62px);
+		@include span(6);
+		@include w-center ($position: relative, $w-percent: 50%);
+		> dl {
+			padding-top: $base-line-height;
+			@include layout(6 20px/65px);
+			dt, dd {
+				line-height: $base-line-height * 2;
+				margin-bottom: 10px;
+			}
+			dt {
+				@include span(2);
+				font-size: inherit;
+				&.none {
+					display: block;
+					color: transparent;
+				}
+			}
+			dd {
+				@include span(4);
+				@include last;
+			}
+		}
+	}
+	@include susy-breakpoint($desktop) {
+		@include layout(12 20px/65px);
+		@include span(6);
+	}
+}
+// =======================================
+// setting.html (Setting)
+// =======================================
+.setting {
+	@extend .booking-comfirm;
+	.info {
+		overflow: hidden;
+		> ul {
+			li {
+				border: 0;
+				clear: both;
+				label {
+					font-size: 12px;
+					@include span(full);
+					position: relative;
+					height: $base-line-height;
+					line-height: $base-line-height;
+					padding-left: 16px;
+					margin-top: 4px;
+					&.star:before {
+						@include fa($icon: "\f005", $fz: 10);
+						color: #e66815;
+						position: absolute;
+						left: 0;
+					}
+				}
+				input {
+					font-size: 12px;
+					@include span(full);
+					height: $base-line-height * 2;
+					line-height: $base-line-height * 2;
+					border: 0;
+					border-bottom: 1px solid $border-gray;
+				}
+				input[type=date] {
+					&::-webkit-calendar-picker-indicator:before {
+						font-size: 18px;
+						top: -10px;
+					}
+				}
+				&.select-style {
+					@include span(full);
+					.stb-select-container {
+						width: 100%;
+						height: $base-line-height * 2;
+						line-height: $base-line-height * 2;
+						border: 0;
+						border-bottom: 1px solid $border-gray;
+						.selected {
+							line-height: $base-line-height * 2;
+						}
+						&:after {
+							font-size: 18px;
+							right: 10px;
+						}
+						.stb-select {
+							top: $base-line-height * 2;
+						}
+					}
+				}
+				&:last-child {
+					border: 0;
+				}
+			}
+		}
+	}
+}
+.setting {
+	@include susy-breakpoint($tablet, 8) {
+		.info {
+			> ul {
+				li {
+					label {
+						font-size: 14px;
+						height: $base-line-height * 2;
+						line-height: $base-line-height * 2;
+						@include span(2);
+						margin-top: 0;
+					}
+					input {
+						font-size: 14px;
+						height: $base-line-height * 2;
+						line-height: $base-line-height * 2;
+						@include span(6);
+						@include last;
+					}
+					&.select-style {
+						label {
+							@include span(2);
+						}
+						.stb-select-container {
+							@include span(6);
+							@include last;
+							height: $base-line-height * 2;
+							line-height: $base-line-height * 2;
+							.selected {
+								line-height: $base-line-height * 2;
+							}
+							.stb-select {
+								top: $base-line-height * 2;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@include susy-breakpoint($desktop, 12) {
+		.info {
+			@include span(7);
+			@include layout(7 20px/65px);
+			> ul {
+				li {
+					label {
+						@include span(2);
+					}
+					input {
+						@include span(5);
+						@include last;
+					}
+					&.select-style {
+						label {
+							@include span(2);
+						}
+						.stb-select-container {
+							@include span(5);
+							@include last;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+.setting {
+	.info-box {
+		@extend .pay;
+		padding-bottom: $base-line-height;
+		margin-bottom: 10px;
+		h6 {
+			@include sub-title ($mb: $base-line-height);
+		}
+		div {
+			margin-bottom: $base-line-height * 2;
+			&:last-child {
+				margin-bottom: 0;
+			}
+			.checkbox-title {
+				font-size: 12px;
+			}
+			.checkbox-wrap {
+				margin-top: 10px;
+				.checkbox {
+					label {
+						margin-right: $base-line-height;
+					}
+					&:last-child {
+						label {
+							margin-right: 0;
+						}
+					}
+				}
+			}
+		}
+		.password {
+			li {
+				margin-bottom: 10px;
+				overflow: hidden;
+				clear: both;
+				&:last-child {
+					margin-bottom: 0;
+				}
+				label {
+					font-size: 12px;
+					@include span(5);
+					height: $base-line-height * 2;
+					line-height: $base-line-height * 2;
+				}
+				input {
+					font-size: 12px;
+					@include span(7);
+					@include last;
+					height: $base-line-height * 2;
+					line-height: $base-line-height * 2;
+				}
+			}
+		}
+	}
+	.btn-box {
+		overflow: hidden;
+		margin: $base-line-height 0;
+		[class^='btn-'] {
+			font-size: 18px;
+			height: $base-line-height * 2;
+			line-height: $base-line-height * 2;
+		}
+		.btn-save {
+			@include span(6);
+			@extend .btn-default;
+		}
+		.btn-clear {
+			@extend .btn-cancle;
+			@include span(6);
+			@include last;
+		}
+	}
+}
+.setting {
+	@include susy-breakpoint(640px) {
+		.info-box {
+			.password {
+				@include layout(8 16px/61px);
+				li {
+					label {
+						font-size: 14px;
+						@include span(2);
+					}
+					input {
+						font-size: 14px;
+						@include span(3);
+					}
+				}
+			}
+			div {
+				margin-bottom: $base-line-height;
+				overflow: hidden;
+				.checkbox-title {
+					@include span(6);
+					font-size: 14px;
+				}
+				.checkbox-wrap {
+					@include span(2);
+					@include last;
+					margin-top: 0;
+				}
+			}
+		}
+	}
+	@include susy-breakpoint($desktop) {
+		.info-box,.btn-box {
+			@include layout(12 20px/65px);
+			@include span(5);
+			@include last;
+		}
+		.info-box {
+			div {
+				@include layout(5 20px/65px);
+				margin-bottom: $base-line-height;
+				&:last-child {
+					margin-bottom: 0;
+				}
+				.checkbox-title {
+					@include span(3);
+				}
+				.checkbox-wrap {
+					@include span(2);
+					@include last;
+					margin-top: 10px;
+					.checkbox {
+						label {
+							margin-right: 10px;
+						}
+					}
+				}
+			}
+			.password {
+				li {
+					@include layout(5 20px/65px);
+					label{
+						@include span(2);
+					}
+					input {
+						@include span(3);
+						@include last;
+					}
+				}
+			}
+		}
+		.btn-box {
+			@include layout(2 11px/197px);
+			padding-left: 0;
+			padding-right: 0;
+			margin: 0;
+			.btn-save {
+				@include span(1);
+			}
+			.btn-clear {
+				@include span(1);
+				@include last;
+			}
+		}
+	}
 }
