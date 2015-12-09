@@ -94,30 +94,22 @@
 	// 토글 메뉴 플러그인
 	(function () {
 
-		// 토글 메뉴 버튼
+		// 토글 버튼
 		var toggleBtn = [
-				$('.store-search-set li .toggle'), //Store 검색 토글 버튼
-				$('.designer-search-set li .toggle'), // Designer 검색 토글 버튼
-				$('.hair-style-set li .btn-down'),
-			],
-		// 토글 패널
-			togglePanel = [
-				$('.store-search-set li ul'), //Store 검색 토글 패널
-				$('.designer-search-set li ul'), // Designer 검색 토글 패벌
-				$('.hair-style-set li .panel'),
+				$('.store-search-set li .toggle'), //Store 검색 토글
+				$('.designer-search-set li .toggle'), // Designer 검색 토글
+				$('.hair-style-set li .btn-down'), //Book Store Service 리스트 토글
 			];
 
-		// 토글 메뉴 이벤트
+		토글 이벤트
 		for (var i = 0; i <= toggleBtn.length-1; i++) {
 			toggleBtn[i].click(function(e) {
-				e.preventDefault();	// 기본 속성 초기화
-				for (var e = 0; e <= toggleBtn.length-1; e++) {
-					if(!toggleBtn[e].hasClass('active')) {
-						toggleBtn[e].toggleClass('active');		// 버튼 효과 class="active"로 제어
-						togglePanel[e].stop().slideToggle();	// 토글 패널 슬라이드 효과
-					}
-				return;
+				e.preventDefault(); // 기본 속성 초기화
+				if(!$(this).hasClass('active')) {
+					$(this).toggleClass('active');		// 버튼 효과 class="active"로 제어
+					$(this).next().stop().slideToggle();	// 토글 패널 슬라이드 효과
 				}
+				return;
 			});
 		};
 
