@@ -92,7 +92,7 @@
 	$( '[class$="-search-set"] li input[type=text]' ).attr('readonly', true);
 
 	// 토글 메뉴 플러그인
-	(function toggleShow() {
+	(function () {
 
 		// 토글 메뉴 버튼
 		var toggleBtn = [
@@ -107,16 +107,17 @@
 				$('.hair-style-set li .panel'),
 			];
 
-		// 토글 패널 제어 : 'active' Class명으로 패널 스타일 구현
+		// 토글 메뉴 이벤트
 		for (var i = 0; i <= toggleBtn.length-1; i++) {
 			toggleBtn[i].click(function(e) {
-				e.preventDefault();
-				if(!$(this).parent().hasClass('active')) {
-				} else {
-					$(this).removeClass('active');
-					$(this).next().stop().slideToggle();
-				}
+				e.preventDefault();	// 기본 속성 초기화
+				for (var e = 0; e <= toggleBtn.length-1; e++) {
+					if(!toggleBtn[e].hasClass('active')) {
+						toggleBtn[e].toggleClass('active');		// 버튼 효과 class="active"로 제어
+						togglePanel[e].stop().slideToggle();	// 토글 패널 슬라이드 효과
+					}
 				return;
+				}
 			});
 		};
 
