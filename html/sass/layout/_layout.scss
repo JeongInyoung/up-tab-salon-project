@@ -11,7 +11,6 @@
 	z-index: 100;
 	.wrap {
 		h1 {
-			font-family: "Myriad Pro";
 			font-size: 16px;
 			font-weight: normal;
 			color: #fff;
@@ -333,6 +332,9 @@
 			&:last-child {
 				margin-bottom: 0;
 			}
+			&:nth-of-type(4), &:nth-of-type(5) {
+				text-align: center;
+			}
 			input {
 				font-size: 13px;
 				width: 100%;
@@ -346,10 +348,43 @@
 					padding-left: 20px;
 				}
 			}
+		}
+	}
+}
+.store-box {
+	.store-search-set {
+		> li {
 			> ul {
 				display: none;
 				max-height: 150px;
 				overflow-y: auto;
+			}
+			.select-default {
+				background: $font-default;
+				display: inline-block;
+				position: relative;
+				text-align: center;
+				&:before {
+					position: absolute;
+					top: 3px;
+					right: 10px;
+					@include fa ($icon: "\f107", $fz: 18);
+					color: fff;
+					pointer-events: none;
+				}
+				> select {
+					padding-right: 40px;
+					border: 1px solid $font-default;
+					-webkit-appearance: none;
+					-ms-appearance: none;
+					-moz-appearance: none;
+					appearance: none;
+					background-color: transparent;
+					border-radius: 0;
+					position: relative;
+					cursor: pointer;
+					z-index: 10;
+				}
 			}
 			.checkbox {
 				text-align: left;
@@ -471,32 +506,6 @@
 							color: #fff;
 						}
 					}
-					&.select-style {
-						text-align: center;
-						.stb-select-container {
-							min-width: 75px;
-							border: 0;
-							color: #fff;
-							> span {
-								overflow: inherit;
-							}
-							&:hover, &:focus, &.selected {
-								&::after {
-									color: #fff;
-									opacity: 1;
-								}
-							}
-							.stb-select {
-								top: -5px;
-								max-height: 40px;
-								border: 0;
-								> li {
-									padding-top: 0;
-									padding-bottom: 0;
-								}
-							}
-						}
-					}
 				}
 			}
 		}
@@ -548,6 +557,9 @@
 					font-family: 'iconfont';
 					content: '\E001';
 				}
+			}
+			&:nth-of-type(3) {
+				text-align: center;
 			}
 		}
 	}
@@ -1744,6 +1756,10 @@
 		line-height: 32px;
 		padding: 0 10px;
 		background: #d5d5d5;
+		 a.next {
+			float: right;
+			color: $font-color-purple;
+		}
 	}
 }
 .booking-list {
@@ -2168,10 +2184,41 @@
 	padding-top: $base-line-height * 2;
 	padding-bottom: $base-line-height * 2;
 	overflow: hidden;
+	.table-set {
+		tbody {
+			tr {
+				td:nth-of-type(2) {
+					color: $font-color-purple;
+				}
+				td:nth-of-type(1):before {
+					content: "Date";
+				}
+				td:nth-of-type(2):before {
+					content: "Salon Name";
+				}
+				td:nth-of-type(3):before {
+					content: "Service";
+				}
+				td:nth-of-type(4):before {
+					content: "Total";
+				}
+				td:nth-of-type(5):before {
+					content: "Status";
+				}
+				td.cancel {
+					color: #bfbfbf;
+					text-decoration: line-through;
+					&:last-child {
+						text-decoration: inherit;
+					}
+				}
+			}
+		}
+	}
 }
 
 // =======================================
-// my-appointment-history.html (History)
+// book-store-comfirm.html (Comfirm)
 // =======================================
 .booking-comfirm {
 	@extend .history-list;
@@ -2222,6 +2269,10 @@
 	}
 }
 .booking-comfirm {
+	border-bottom: 1px solid $border-purple;
+	&:last-child {
+		border-bottom: 0;
+	}
 	.pay {
 		width: 100%;
 		padding: $base-line-height;
@@ -2230,25 +2281,22 @@
 		> p {
 			overflow: hidden;
 			clear: both;
-			&:nth-of-type(1) {
-				margin-top: $base-line-height;
-			}
-			&:nth-of-type(2) {
-				margin-bottom: $base-line-height;
-			}
-			&:nth-of-type(3) {
-				font-size: 48px;
-				text-align: right;
-				margin-top: $base-line-height;
-			}
 		}
 		.service {
+			&:first-child {
+				margin-top: $base-line-height;
+			}
 			span:first-child {
 				float: left;
 			}
 			span:last-child {
 				float: right;
 			}
+		}
+		.total {
+			font-size: 48px;
+			text-align: right;
+			margin-top: $base-line-height;
 		}
 		.btn-book {
 			width: 100%;
@@ -2310,6 +2358,12 @@
 				height: $base-line-height * 2;
 				line-height: $base-line-height * 2;
 			}
+			.confirm-button {
+				@extend .btn-default;
+				width: 170px;
+				height: $base-line-height * 2;
+				line-height: $base-line-height * 2;
+			}
 			&:last-child {
 				margin-bottom: 0;
 			}
@@ -2321,6 +2375,13 @@
 		> a {
 			color: $font-color-purple;
 			text-decoration: underline;
+			&.k_toggle {
+				margin-left: 10px;
+				vertical-align: bottom;
+			}
+		}
+		> input[type=checkbox] {
+			display: none;
 		}
 	}
 	.btn-set {
@@ -2523,7 +2584,8 @@
 			}
 			.checkbox-wrap {
 				margin-top: 10px;
-				.checkbox {
+				> li {
+					float: left;
 					label {
 						margin-right: $base-line-height;
 					}

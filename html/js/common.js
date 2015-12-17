@@ -88,9 +88,6 @@
 	// Select Box Style 설정
 	$('.select-style select').stbDropdown();
 
-	// Store & Designer 검색 input 요소 편집할 수 없게 설정
-	$( '[class$="-search-set"] li input[type=text]' ).attr('readonly', true);
-
 	// 토글 메뉴 플러그인
 	(function () {
 
@@ -101,7 +98,7 @@
 				$('.hair-style-set li .btn-down'), //Book Store Service 리스트 토글
 			];
 
-		토글 이벤트
+		// 토글 이벤트
 		for (var i = 0; i <= toggleBtn.length-1; i++) {
 			toggleBtn[i].click(function(e) {
 				e.preventDefault(); // 기본 속성 초기화
