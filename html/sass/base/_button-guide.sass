@@ -7,14 +7,13 @@
 	font-size: $fz+px
 	color: $color
 	text-align: center
-	min-width: $miw+px
+	min-width: $miw+px - 40px
 	line-height: ($fz*2)+px
 	padding: 0 10px
 	border: 1px solid darken($bg-color, $percent)
 	background: $bg-color
 	margin-left: $ml
-	&:hover,
-	&:focus
+	&:hover, &:focus
 		background: darken($bg-color, $percent)
 		text-shadow: 1px 1px 0 darken($bg-color, 15%)
 		-webkit-transition: background-color 0.4s linear
@@ -24,7 +23,8 @@
 	.fa, .icon
 		font-size: 16px
 		vertical-align: middle
-
+	+susy-breakpoint(400px)
+		min-width: $miw+px
 
 // 기본 버튼
 .btn-default

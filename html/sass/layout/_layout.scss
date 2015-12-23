@@ -10,12 +10,16 @@
 	background: $bg-nav-depth;
 	z-index: 100;
 	.wrap {
-		h1 {
-			font-size: 16px;
+		> h1 {
+			font-family: Verdana;
+			font-size: 100%;
 			font-weight: normal;
 			color: #fff;
 			line-height: 40px;
 			margin: 0;
+			> a {
+				font-family: Verdana;
+			}
 		}
 	}
 }
@@ -23,6 +27,10 @@
 	.wrap {
 		> h1 {
 			@include span(2);
+			@include susy-breakpoint($mobile, 4) {
+				@include span(2);
+				font-size: 16px;
+			}
 			@include susy-breakpoint($tablet, 8) {
 				@include span(2);
 			}
@@ -95,8 +103,8 @@
 				min-width: 80px;
 				height: 100%;
 				line-height: 40px;
-				padding-left: 34px;
-				padding-right: 12px;
+				padding-left: 32px;
+				padding-right: 10px;
 				i {
 					font-size: 18px;
 					margin-right: 6px;
@@ -369,7 +377,7 @@
 					top: 3px;
 					right: 10px;
 					@include fa ($icon: "\f107", $fz: 18);
-					color: fff;
+					color: #fff;
 					pointer-events: none;
 				}
 				> select {
@@ -701,12 +709,12 @@
 }
 .title-btn-bg {
 	position: relative;
-	@include span(full);
+	width: 100%;
 	background: $bg-default-purple;
 	border-top: 1px solid #a547c0;
-	clear: both;
 	.title-btn {
 		line-height: 56px;
+		overflow: hidden;
 		> h3 {
 			@include wh-center;
 			font-size: 100%;
@@ -1307,14 +1315,13 @@
 	clear: both;
 	> ul {
 		> li:first-child {
-			position: relative;
 			min-height: 100px;
+			text-align: center;
 			.name {
-				@include h-center;
 				font-size: 30px;
 				color: $font-color-purple;
-				text-align: center;
 				width: 100%;
+				letter-spacing: -0.03em;
 			}
 		}
 		> li:last-child {
@@ -1494,7 +1501,7 @@
 				color: inherit;
 				background: #fff;
 				border: 1px solid $border-purple;
-				box-sizing: border-box;
+				@include border-box-sizing;
 			}
 			&.today {
 				position: relative;
@@ -1795,19 +1802,21 @@
 		> li:nth-of-type(1) {
 			@include span(1);
 			.designer {
-				width: 100%;
-				height: 100%;
+				@include w-center($position: relative);
+				max-width: 235px;
+				max-height: 235px;
+				overflow: hidden;
+				border: 1px solid $border-gray;
 				img {
-					max-width: 100%;
-					max-height: 100%;
-					border: 1px solid $border-gray;
+					width: 100%;
+					height: 100%;
 				}
 			}
 		}
 		> li:nth-of-type(2) {
 			@include span(1);
 			@include last;
-			box-sizing: border-box;
+			@include border-box-sizing;
 			max-width: 100%;
 		}
 		> li:nth-of-type(3) {
@@ -2090,9 +2099,6 @@
 			> li:nth-of-type(1) {
 				@include span(3);
 				padding-left: 0;
-				.designer {
-					height: 230px;
-				}
 			}
 			> li:nth-of-type(2) {
 				@include span(5);
@@ -2187,22 +2193,25 @@
 	.table-set {
 		tbody {
 			tr {
-				td:nth-of-type(2) {
-					color: $font-color-purple;
-				}
 				td:nth-of-type(1):before {
 					content: "Date";
 				}
 				td:nth-of-type(2):before {
-					content: "Salon Name";
+					content: "Time";
+				}
+				td:nth-of-type(3) {
+					color: $font-color-purple;
 				}
 				td:nth-of-type(3):before {
-					content: "Service";
+					content: "Salon Name";
 				}
 				td:nth-of-type(4):before {
-					content: "Total";
+					content: "Service";
 				}
 				td:nth-of-type(5):before {
+					content: "Total";
+				}
+				td:nth-of-type(6):before {
 					content: "Status";
 				}
 				td.cancel {
@@ -2569,6 +2578,7 @@
 .setting {
 	.info-box {
 		@extend .pay;
+		padding: $base-line-height;
 		padding-bottom: $base-line-height;
 		margin-bottom: 10px;
 		h6 {
@@ -2584,6 +2594,7 @@
 			}
 			.checkbox-wrap {
 				margin-top: 10px;
+				overflow: hidden;
 				> li {
 					float: left;
 					label {

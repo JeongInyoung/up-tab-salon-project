@@ -33,10 +33,10 @@ body {
 	* {
 		padding: 0;
 		margin: 0;
+		@extend %box-sizing;
 	}
 }
-// border-box 설정
-@include border-box-sizing;
+
 // 드래그 색상 지정
 *::selection {
 	background-color: #dfbde9; color: $font-color-purple;
@@ -79,6 +79,11 @@ button {
 	text-overflow: ellipsis;
 	white-space: nowrap;
 }
+%box-sizing {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
 // FontAwesome
 @mixin fa ($icon: " ", $fz: 16) {
 	font-family: 'FontAwesome';
@@ -106,6 +111,7 @@ button {
 // =======================================
 // Skip Navigation
 // =======================================
+// 스킵 네비게이션
 .blind {
 	position: relative;
 	z-index: 100;
@@ -127,6 +133,21 @@ button {
 		line-height: 30px;
 		margin: 0;
 		background: $bg-default-purple;
+	}
+}
+// 빈 페이지
+.blank-page {
+	background: $table-th-bg-color;
+	text-align: center;
+	min-height: $base-line-height * 10;
+	padding-top: $base-line-height * 3;
+	padding-bottom: $base-line-height * 4;
+	margin-top: $base-line-height * 2;
+	margin-bottom: $base-line-height * 2;
+	> i.fa {
+		font-size: 70px;
+		color: #fff;
+		margin-bottom: 10px;
 	}
 }
 
@@ -235,22 +256,31 @@ input, select, textarea {
 	height: 30px;
 	padding: 0 10px;
 	border: 1px solid $border-gray;
+	-webkit-appearance: none;
+	-webkit-border-radius: 1px;
+	@extend %box-sizing;
+}
+input[type=search] {
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
 	box-sizing: border-box;
+	@extend %box-sizing;
+}
+input[type=search]::-webkit-search-cancel-button,
+input[type=search]::-webkit-search-decoration,
+input[type=search]::-webkit-search-results-button,
+input[type=search]::-webkit-search-results-decoration {
+	-webkit-appearance: none;
 }
 // fontAwesome 달력 아이콘을 표시
-input {
-	&[type=date] {
-		position: relative;
-		&:before {
-			position: absolute;
-			top: 0;
-			right: 10px;
-			@include fa ($icon: "\f073", $fz: 18);
-			color: $font-color-label;
-		}
-	}
-	&[type=search] {
-		box-sizing: border-box;
+input[type=date] {
+	position: relative;
+	&:before {
+		position: absolute;
+		top: 0;
+		right: 10px;
+		@include fa ($icon: "\f073", $fz: 18);
+		color: $font-color-label;
 	}
 }
 // 스핀 버튼 (상하 버튼)을 숨기기
@@ -374,7 +404,7 @@ input[type=date]::-webkit-calendar-picker-indicator:before {
 				line-height: 25px;
 				padding-top: 0;
 				padding-bottom: 0;
-				padding-left: 150px;
+				padding-left: 170px;
 				word-break:break-all;
 				&:before {
 					position: absolute;
@@ -522,6 +552,7 @@ input[type=date]::-webkit-calendar-picker-indicator:before {
 // Aside Navigation Style
 // =======================================
 .mobile-menu {
+	display: block;
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -546,6 +577,16 @@ input[type=date]::-webkit-calendar-picker-indicator:before {
 	}
 	&.close {
 		display: none;
+	}
+}
+@include susy-breakpoint($desktop) {
+	.mobile-menu {
+		display: none;
+	}
+	.mobile-menu-dim {
+		&.open {
+			display: none;
+		}
 	}
 }
 

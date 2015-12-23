@@ -30,6 +30,7 @@
 		box-sizing: content-box;
 		@include susy-breakpoint($mobile, 6) {
 			@include wh-center($position: relative);
+			margin: 0;
 			max-width: 360px;
 		}
 		.popup-title {
