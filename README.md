@@ -1,4 +1,4 @@
-# Online Appointment - Up Tab Salon
+# Online Appointment - Up Tab Salon Site
 
 #### Online Appointment 사이트 반응형 제작
 - 기간 : 2015년 9월 ~ 2016년 2월 
