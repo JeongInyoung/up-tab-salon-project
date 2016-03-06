@@ -1,8 +1,6 @@
-## Gulp 명령어 정리
+# Online Appointment - Up Tab Salon
 
-명령어 | 해석
----|---
-`gulp` | Gulp 기본 업무 (+워치)
-`gulp build` | Gulp 빌드 업무
-`gulp remove` | Gulp 생성 폴더 제거 업무
-`gulp server` | Gulp 서버 업무
+#### Online Appointment 사이트 반응형 제작
+- 기간 : 2015년 9월 ~ 2016년 2월 
+- 역할 : HTML, CSS, jQuery, javascript, Sass, Susy, Gulp, Github (100%)
+- 성과 : [up tab salon](http://wwwq.uptabsalon.com:8080/)
